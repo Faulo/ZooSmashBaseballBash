@@ -85,9 +85,9 @@ namespace ZSBB {
                 var animator = instance.GetComponent<Animator>();
                 animator.runtimeAnimatorController = this.animator;
 
-                var collider = instance.AddComponent<BoxCollider>();
-                collider.size = bounds.size;
-                collider.center = bounds.center;
+                var collider = instance.AddComponent<CapsuleCollider>();
+                (collider.direction, collider.radius, collider.height) = GetCapsule(bounds);
+                collider.center = new Vector3(0, bounds.size.y * 0.5f, 0);
                 collider.material = material;
 
                 var rigidbody = instance.AddComponent<Rigidbody>();
@@ -109,6 +109,19 @@ namespace ZSBB {
                 behavior.attachedRigidbody = rigidbody;
                 behavior.attachedAgent = agent;
             }
+        }
+        static (int direction, float radius, float height) GetCapsule(in Bounds bounds) {
+            var size = bounds.size;
+            if (size.x > size.y && size.x > size.z) {
+                return (0, GetRadius(size.SwizzleYZ()), size.x);
+            }
+            if (bounds.size.y > bounds.size.z) {
+                return (1, GetRadius(size.SwizzleXZ()), size.y);
+            }
+            return (2, GetRadius(size.SwizzleXY()), size.z);
+        }
+        static float GetRadius(Vector2 size) {
+            return (size.x + size.y) * 0.25f;
         }
     }
 }
