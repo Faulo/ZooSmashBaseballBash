@@ -107,6 +107,7 @@ namespace ZSBB {
                 var behavior = instance.AddComponent<AnimalBehavior>();
                 behavior.attachedAnimator = animator;
                 behavior.attachedRigidbody = rigidbody;
+                behavior.attachedCollider = collider;
                 behavior.attachedAgent = agent;
             }
         }

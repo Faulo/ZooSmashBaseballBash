@@ -1,35 +1,44 @@
 using UnityEngine;
-using UnityEngine.AI;
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
     public class CheckIsGrounded : Node {
         readonly Transform _transform;
         readonly Rigidbody _rigidbody;
-        readonly NavMeshAgent _agent;
+        readonly Collider _collider;
 
-        float distanceToGround = 1f;
+        readonly float distanceToGround = 0.1f;
+        readonly LayerMask groundLayers = LayerMask.GetMask("Environment");
 
-        public CheckIsGrounded(Transform transform, Rigidbody rigidbody, NavMeshAgent agent) {
+        public CheckIsGrounded(Transform transform, Rigidbody rigidbody, Collider collider) {
             _transform = transform;
             _rigidbody = rigidbody;
-            _agent = agent;
+            _collider = collider;
         }
 
         public override NodeState Evaluate() {
             if (IsGrounded()) {
-                //_agent.enabled = true;
                 state = NodeState.SUCCESS;
                 return state;
             }
 
-            //_agent.enabled = false;
             state = NodeState.FAILURE;
             return state;
         }
 
         bool IsGrounded() {
-            return Physics.Raycast(_transform.position, Vector3.down, distanceToGround + 0.1f);
+            if (!Physics.Raycast(_rigidbody.worldCenterOfMass, Vector3.down, out var hit, groundLayers)) {
+                return false;
+            }
+
+            if (!Physics.ComputePenetration(
+                _collider, _transform.position, _transform.rotation,
+                hit.collider, hit.transform.position, hit.transform.rotation,
+                out var direction, out float distance)) {
+                return false;
+            }
+
+            return distance < distanceToGround;
         }
     }
 }

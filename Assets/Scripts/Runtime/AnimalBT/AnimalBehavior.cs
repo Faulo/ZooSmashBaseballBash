@@ -30,6 +30,7 @@ namespace ZSBB.AnimalBT {
 
         public NavMeshAgent attachedAgent;
         public Rigidbody attachedRigidbody;
+        public Collider attachedCollider;
         public Animator attachedAnimator;
 
         protected override void Start() {
@@ -50,7 +51,7 @@ namespace ZSBB.AnimalBT {
             Node root = new Selector(
                 // If Grounded, Find player and goto player
                 new Sequence(
-                    new CheckIsGrounded(transform, attachedRigidbody, attachedAgent),
+                    new CheckIsGrounded(transform, attachedRigidbody, attachedCollider),
                     new CheckForPlayer(attachedAgent),
                     new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
                 ),
