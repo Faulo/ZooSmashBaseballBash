@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7976954140335440633}
   - component: {fileID: 4999296351490415613}
-  - component: {fileID: 1066866147534109874}
-  - component: {fileID: 8577579385921451524}
-  - component: {fileID: 6058534958388852173}
+  - component: {fileID: 809746223038722146}
+  - component: {fileID: 7890593398368048202}
+  - component: {fileID: 3299894221621071220}
   m_Layer: 7
   m_Name: P_Animal_Penguin
   m_TagString: Untagged
@@ -56,9 +56,8 @@ MonoBehaviour:
   baseDrag: 1
   material: {fileID: 0}
   layer: 7
-  agentTypeID: 0
   baseSpeed: 0
---- !u!65 &1066866147534109874
+--- !u!65 &809746223038722146
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,7 +78,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.45995983, y: 0.75941455, z: 0.43561453}
   m_Center: {x: 0, y: 0.38097066, z: 0.023964902}
---- !u!54 &8577579385921451524
+--- !u!54 &7890593398368048202
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +105,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &6058534958388852173
+--- !u!114 &3299894221621071220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

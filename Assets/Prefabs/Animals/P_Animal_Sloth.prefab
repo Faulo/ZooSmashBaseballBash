@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7976954140335440633}
   - component: {fileID: 4999296351490415613}
-  - component: {fileID: 6795745033402089080}
-  - component: {fileID: 3979988766883198559}
-  - component: {fileID: 8422544617938853872}
+  - component: {fileID: 3683044206669334338}
+  - component: {fileID: 440042055193534547}
+  - component: {fileID: 2822365423415697878}
   m_Layer: 7
   m_Name: P_Animal_Sloth
   m_TagString: Untagged
@@ -56,9 +56,29 @@ MonoBehaviour:
   baseDrag: 1
   material: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
   layer: 7
-  agentTypeID: 0
   baseSpeed: 1
---- !u!54 &6795745033402089080
+--- !u!65 &3683044206669334338
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8732147926518639443}
+  m_Material: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.52227193, y: 0.67596406, z: 1.0436522}
+  m_Center: {x: 0, y: 0.29017207, z: 0.07886448}
+--- !u!54 &440042055193534547
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,28 +105,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &3979988766883198559
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8732147926518639443}
-  m_Material: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.52227193, y: 0.67596406, z: 1.0436522}
-  m_Center: {x: 0, y: 0.29017207, z: 0.07886448}
---- !u!114 &8422544617938853872
+--- !u!114 &2822365423415697878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -2,7 +2,6 @@ using System.Linq;
 using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
-using UnityEngine.AI;
 using ZSBB.AnimalBT;
 
 namespace ZSBB {
@@ -27,8 +26,6 @@ namespace ZSBB {
         int layer;
 
         [Header("Gameplay")]
-        [SerializeField, ReadOnly]
-        int agentTypeID;
         [SerializeField]
         public float baseSpeed;
 
@@ -52,17 +49,6 @@ namespace ZSBB {
                 .OfType<RuntimeAnimatorController>()
                 .FirstOrDefault();
 
-            agentTypeID = 0;
-            int settingsCount = NavMesh.GetSettingsCount();
-            for (int i = 0; i < settingsCount; i++) {
-                var settings = NavMesh.GetSettingsByIndex(i);
-                string name = NavMesh.GetSettingsNameFromID(settings.agentTypeID);
-                if (name == assetName) {
-                    agentTypeID = settings.agentTypeID;
-                    break;
-                }
-            }
-
             UnityEditor.EditorUtility.SetDirty(gameObject);
 
             SpawnAnimal();
@@ -85,6 +71,20 @@ namespace ZSBB {
 
         void SpawnAnimal() {
             transform.Clear();
+            foreach (var component in GetComponents<Component>()) {
+                if (component is Transform) {
+                    continue;
+                }
+                if (component is Animal) {
+                    continue;
+                }
+                if (Application.isPlaying) {
+                    Destroy(component);
+                } else {
+                    DestroyImmediate(component);
+                }
+            }
+
             gameObject.layer = layer;
 
             if (model) {
@@ -98,20 +98,13 @@ namespace ZSBB {
                 collider.size = bounds.size;
                 collider.center = bounds.center;
                 collider.material = material;
-
-                var agent = gameObject.GetOrAddComponent<NavMeshAgent>();
-                agent.agentTypeID = agentTypeID;
-                agent.enabled = false;
-                var settings = NavMesh.GetSettingsByID(agentTypeID);
-                agent.radius = bounds.size.x / 2;
-                agent.height = bounds.size.y;
             }
             var rigidbody = gameObject.GetOrAddComponent<Rigidbody>();
             rigidbody.drag = baseDrag;
             rigidbody.mass = weight;
             rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-            //var behavior = gameObject.GetOrAddComponent<AnimalBehavior>();
+            var behavior = gameObject.GetOrAddComponent<AnimalBehavior>();
         }
     }
 }

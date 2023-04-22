@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7976954140335440633}
   - component: {fileID: 4999296351490415613}
-  - component: {fileID: 8832169500109171835}
-  - component: {fileID: 6582728503372023751}
-  - component: {fileID: 5749568958437691039}
+  - component: {fileID: 6289726428570724411}
+  - component: {fileID: 1588355516604033289}
+  - component: {fileID: 6026897857263318036}
   m_Layer: 7
   m_Name: P_Animal_Snake
   m_TagString: Untagged
@@ -56,9 +56,8 @@ MonoBehaviour:
   baseDrag: 1
   material: {fileID: 0}
   layer: 7
-  agentTypeID: 0
   baseSpeed: 0
---- !u!65 &8832169500109171835
+--- !u!65 &6289726428570724411
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,7 +78,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.24823758, y: 0.9433447, z: 1.2154825}
   m_Center: {x: -0.00000005122274, y: 0.30471292, z: -0.004788477}
---- !u!54 &6582728503372023751
+--- !u!54 &1588355516604033289
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +105,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &5749568958437691039
+--- !u!114 &6026897857263318036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
