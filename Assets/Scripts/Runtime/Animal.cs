@@ -95,12 +95,17 @@ namespace ZSBB {
                 rigidbody.mass = weight;
                 rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
+                /*
                 var agentObj = new GameObject(nameof(NavMeshAgent)) {
                     hideFlags = HideFlags.DontSave
                 };
                 agentObj.transform.parent = transform;
-                var agent = agentObj.GetOrAddComponent<NavMeshAgent>();
+                //*/
+                var agent = instance.GetOrAddComponent<NavMeshAgent>();
                 agent.agentTypeID = agentTypeID;
+                agent.updatePosition = false;
+                agent.updateRotation = false;
+                agent.updateUpAxis = false;
                 var settings = NavMesh.GetSettingsByID(agentTypeID);
                 agent.radius = bounds.size.x / 2;
                 agent.height = bounds.size.y;

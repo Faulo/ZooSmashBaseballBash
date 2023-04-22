@@ -15,7 +15,6 @@ namespace ZSBB.AnimalBT {
                 var player = GameObject.Find("P_Player");
                 if (player) {
                     parent.parent.SetData("player", player.transform);
-                    _navMeshAgent.destination = player.transform.position;
                     state = NodeState.SUCCESS;
                     return state;
                 }

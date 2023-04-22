@@ -25,7 +25,7 @@ namespace ZSBB.AnimalBT {
     }
     sealed class AnimalBehavior : BTree {
 
-        public static float speed = 1f;
+        public static float speed = 10f;
         public static float weight = 10f;
 
         public NavMeshAgent attachedAgent;
@@ -33,15 +33,15 @@ namespace ZSBB.AnimalBT {
         public Animator attachedAnimator;
 
         protected override void Start() {
-            attachedAgent.updatePosition = false;
-            attachedAgent.Warp(attachedRigidbody.position);
             base.Start();
+            attachedAgent.Warp(attachedRigidbody.position);
+            attachedAgent.destination = GameObject.Find("P_Player")
+                .transform.position;
         }
 
         protected override void FixedUpdate() {
             base.FixedUpdate();
             if (attachedAgent.hasPath) {
-                Debug.Log($"desiredVelocity is {attachedAgent.desiredVelocity}, warping to {attachedRigidbody.position}");
                 attachedAgent.nextPosition = attachedRigidbody.position;
             }
         }
