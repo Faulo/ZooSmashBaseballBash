@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a0821290f43a944b398dc66f1cf468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentSpeed: 0
-  bufferSize: 64
+  m_speedSmoothing: 0.03125
+  m_currentVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &3758752868979738640
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachedRigidbody: {fileID: 7754892972574987395}
   attachedCollider: {fileID: -1302100742187604535}
+  baseTracker: {fileID: 0}
+  topTracker: {fileID: 0}
   onCollision:
     m_PersistentCalls:
       m_Calls:
@@ -218,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a0821290f43a944b398dc66f1cf468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentSpeed: 0
-  bufferSize: 64
+  m_speedSmoothing: 0.03125
+  m_currentVelocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &7765353708564074172
 PrefabInstance:
   m_ObjectHideFlags: 0
