@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using AnimalBT;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,18 +41,18 @@ namespace BehaviorTree {
         }
 
         protected override Node SetupTree() {
-            Node root = new Selector(new List<Node> {
+            Node root = new Selector(
                 // If Grounded, Find player and goto player
-                new Sequence( new List<Node> {
+                new Sequence(
                     new CheckIsGrounded(transform),
                     new CheckForPlayer(agent),
                     new TaskGoToPlayer(transform, agent, attachedRigidbody)
-                }),
+                ),
                 // If in the Air, play Flying Animation
-                new Sequence(new List<Node> {
+                new Sequence(
                     new TaskFlying(transform)
-                })
-            });
+                )
+            );
 
             return root;
         }

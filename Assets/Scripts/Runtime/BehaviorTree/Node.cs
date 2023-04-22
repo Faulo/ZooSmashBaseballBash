@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace BehaviorTree {
@@ -10,22 +11,23 @@ namespace BehaviorTree {
         protected NodeState state;
 
         public Node parent;
-        protected List<Node> children = new List<Node>();
+        protected readonly Node[] children;
 
         Dictionary<string, object> _dataContext = new Dictionary<string, object>();
 
         public Node() {
             parent = null;
+            children = Array.Empty<Node>();
         }
-        public Node(List<Node> children) {
+        public Node(params Node[] children) {
             foreach (var child in children) {
                 _Attach(child);
             }
+            this.children = children;
         }
 
         void _Attach(Node node) {
             node.parent = this;
-            children.Add(node);
         }
 
         public virtual NodeState Evaluate() => NodeState.FAILURE;

@@ -12,7 +12,7 @@ namespace AnimalBT {
         }
 
         public override NodeState Evaluate() {
-            _animator.Play("Base Layer."+AnimationStates.Fly);
+            _animator.Play("Base Layer." + AnimationStates.Fly);
 
             state = NodeState.RUNNING;
             return state;
