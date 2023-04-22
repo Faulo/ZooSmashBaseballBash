@@ -4,11 +4,7 @@ using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
     public class CheckForPlayer : Node {
-        NavMeshAgent _navMeshAgent;
-
-        public CheckForPlayer(NavMeshAgent agent) {
-            _navMeshAgent = agent;
-        }
+        
         public override NodeState Evaluate() {
             object t = GetData("player");
             if (t == null) {
