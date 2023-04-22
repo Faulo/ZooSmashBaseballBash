@@ -29,16 +29,18 @@ namespace ZSBB.AnimalBT {
         public static float speed = 1f;
         public static float weight = 10f;
 
-        [SerializeField] NavMeshAgent agent;
-        [SerializeField] Rigidbody attachedRigidbody;
+        NavMeshAgent attachedAgent;
+        Rigidbody attachedRigidbody;
+        Animator attachedAnimator;
 
-        void OnValidate() {
-            if (!agent) {
-                transform.TryGetComponentInChildren(out agent);
-            }
-            if (!attachedRigidbody) {
-                transform.TryGetComponentInChildren(out attachedRigidbody);
-            }
+        protected override void Start() {
+            UpdateComponents();
+            base.Start();
+        }
+        void UpdateComponents() {
+            transform.TryGetComponentInChildren(out attachedAgent);
+            transform.TryGetComponentInChildren(out attachedRigidbody);
+            transform.TryGetComponentInChildren(out attachedAnimator);
         }
 
         protected override Node SetupTree() {
@@ -46,12 +48,12 @@ namespace ZSBB.AnimalBT {
                 // If Grounded, Find player and goto player
                 new Sequence(
                     new CheckIsGrounded(transform),
-                    new CheckForPlayer(agent),
-                    new TaskGoToPlayer(transform, agent, attachedRigidbody)
+                    new CheckForPlayer(attachedAgent),
+                    new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
                 ),
                 // If in the Air, play Flying Animation
                 new Sequence(
-                    new TaskFlying(transform)
+                    new TaskFlying(attachedAnimator)
                 )
             );
 

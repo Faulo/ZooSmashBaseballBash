@@ -5,11 +5,11 @@ namespace ZSBB.BehaviorTree {
 
         Node _root = null;
 
-        protected void Start() {
+        protected virtual void Start() {
             _root = SetupTree();
         }
 
-        void Update() {
+        protected void Update() {
             if (_root != null) {
                 _root.Evaluate();
             }

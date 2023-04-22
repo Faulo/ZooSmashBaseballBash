@@ -11,11 +11,11 @@ namespace ZSBB.AnimalBT {
 
         float minDistanceToPlayerBeforeGameOver = 5f;
 
-        public TaskGoToPlayer(Transform transform, NavMeshAgent navMeshAgent, Rigidbody rigidbody) {
+        public TaskGoToPlayer(Transform transform, NavMeshAgent navMeshAgent, Rigidbody rigidbody, Animator animator) {
             _transform = transform;
             _navMeshAgent = navMeshAgent;
             _rigidbody = rigidbody;
-            _animator = transform.GetComponent<Animator>();
+            _animator = animator;
         }
 
         public override NodeState Evaluate() {
@@ -23,10 +23,10 @@ namespace ZSBB.AnimalBT {
 
             if (Vector3.Distance(_transform.position, player.position) > minDistanceToPlayerBeforeGameOver) {
                 var desiredVelocity = _navMeshAgent.desiredVelocity;
-                _animator.Play("Base Layer." + AnimationStates.Walk);
+                _animator.PlayInFixedTime(AnimationStates.Walk);
                 _rigidbody.AddForce(force: desiredVelocity.normalized * AnimalBehavior.speed);
             } else {
-                _animator.Play("Base Layer." + AnimationStates.Idle_A);
+                _animator.PlayInFixedTime(AnimationStates.Idle_A);
                 _rigidbody.AddForce(Vector3.zero);
             }
 

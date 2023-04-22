@@ -79,7 +79,7 @@ namespace ZSBB {
             }
         }
 #endif
-        void Start() {
+        void Awake() {
             SpawnAnimal();
         }
 

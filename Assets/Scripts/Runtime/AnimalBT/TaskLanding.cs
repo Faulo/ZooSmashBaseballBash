@@ -5,12 +5,12 @@ namespace ZSBB.AnimalBT {
     public class TaskLanding : Node {
         Animator _animator;
 
-        public TaskLanding(Transform transform) {
-            _animator = transform.GetComponent<Animator>();
+        public TaskLanding(Animator animator) {
+            _animator = animator;
         }
 
         public override NodeState Evaluate() {
-            _animator.Play("Base Layer." + AnimationStates.Roll);
+            _animator.PlayInFixedTime(AnimationStates.Roll);
 
             state = NodeState.RUNNING;
             return state;
