@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BehaviorTree {
+namespace ZSBB.BehaviorTree {
     public enum NodeState {
         RUNNING,
         SUCCESS,

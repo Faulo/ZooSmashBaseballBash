@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BehaviorTree {
+namespace ZSBB.BehaviorTree {
     public abstract class BTree : MonoBehaviour {
 
         Node _root = null;

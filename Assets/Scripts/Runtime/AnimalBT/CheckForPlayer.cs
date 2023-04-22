@@ -1,8 +1,8 @@
-﻿using BehaviorTree;
 using UnityEngine;
 using UnityEngine.AI;
+using ZSBB.BehaviorTree;
 
-namespace AnimalBT {
+namespace ZSBB.AnimalBT {
     public class CheckForPlayer : Node {
         NavMeshAgent _navMeshAgent;
 

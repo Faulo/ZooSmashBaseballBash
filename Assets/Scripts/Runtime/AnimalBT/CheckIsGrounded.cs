@@ -1,7 +1,7 @@
-﻿using BehaviorTree;
 using UnityEngine;
+using ZSBB.BehaviorTree;
 
-namespace AnimalBT {
+namespace ZSBB.AnimalBT {
     public class CheckIsGrounded : Node {
         Transform _transform;
         Animator _animator;

@@ -1,4 +1,4 @@
-namespace BehaviorTree {
+namespace ZSBB.BehaviorTree {
     public class Sequence : Node {
         public Sequence() : base() { }
         public Sequence(params Node[] children) : base(children) { }

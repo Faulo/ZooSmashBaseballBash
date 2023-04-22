@@ -3,6 +3,7 @@ using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AI;
+using ZSBB.AnimalBT;
 
 namespace ZSBB {
     [ExecuteAlways]
@@ -110,6 +111,8 @@ namespace ZSBB {
             rigidbody.drag = baseDrag;
             rigidbody.mass = weight;
             rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+            var behavior = gameObject.GetOrAddComponent<AnimalBehavior>();
         }
     }
 }

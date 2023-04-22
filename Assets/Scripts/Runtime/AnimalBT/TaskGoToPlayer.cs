@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
+using ZSBB.BehaviorTree;
 
-namespace BehaviorTree {
+namespace ZSBB.AnimalBT {
     public class TaskGoToPlayer : Node {
         Transform _transform;
         NavMeshAgent _navMeshAgent;
@@ -23,7 +24,7 @@ namespace BehaviorTree {
             if (Vector3.Distance(_transform.position, player.position) > minDistanceToPlayerBeforeGameOver) {
                 var desiredVelocity = _navMeshAgent.desiredVelocity;
                 _animator.Play("Base Layer." + AnimationStates.Walk);
-                _rigidbody.AddForce(force: desiredVelocity.normalized * AnimalBT.speed);
+                _rigidbody.AddForce(force: desiredVelocity.normalized * AnimalBehavior.speed);
             } else {
                 _animator.Play("Base Layer." + AnimationStates.Idle_A);
                 _rigidbody.AddForce(Vector3.zero);

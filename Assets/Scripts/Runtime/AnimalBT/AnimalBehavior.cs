@@ -1,8 +1,8 @@
-using AnimalBT;
 using UnityEngine;
 using UnityEngine.AI;
+using ZSBB.BehaviorTree;
 
-namespace BehaviorTree {
+namespace ZSBB.AnimalBT {
     public enum AnimationStates {
         Attack,
         Bounce,
@@ -23,7 +23,7 @@ namespace BehaviorTree {
         Run,
         Spin
     }
-    sealed class AnimalBT : BTree {
+    sealed class AnimalBehavior : BTree {
 
         public static float speed = 1f;
         public static float weight = 10f;
