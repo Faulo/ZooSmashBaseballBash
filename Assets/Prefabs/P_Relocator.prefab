@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speedSmoothing: 0.03125
+  m_isMovingThreshold: 0.125
   m_currentVelocity: {x: 0, y: 0, z: 0}
+  m_direction: {x: 0, y: 0, z: 0}
+  m_speed: 0
+  m_isMoving: 0
 --- !u!1 &3758752868979738640
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,8 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachedRigidbody: {fileID: 7754892972574987395}
   attachedCollider: {fileID: -1302100742187604535}
-  baseTracker: {fileID: 0}
-  topTracker: {fileID: 0}
+  baseTracker: {fileID: 6677505498323583887}
+  topTracker: {fileID: 2358901770863132883}
   onCollision:
     m_PersistentCalls:
       m_Calls:
@@ -221,7 +225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speedSmoothing: 0.03125
+  m_isMovingThreshold: 0.125
   m_currentVelocity: {x: 0, y: 0, z: 0}
+  m_direction: {x: 0, y: 0, z: 0}
+  m_speed: 0
+  m_isMoving: 0
 --- !u!1001 &7765353708564074172
 PrefabInstance:
   m_ObjectHideFlags: 0

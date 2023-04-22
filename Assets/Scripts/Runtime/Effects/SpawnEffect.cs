@@ -14,9 +14,8 @@ namespace ZSBB.Effects {
         [SerializeField, ConditionalField(nameof(destroyAfterTimeout))]
         float timeout = 1;
 
-        public void ResolveCollision(Relocator relocator, Rigidbody rigidbody, ContactPoint point) {
-            var rotation = Quaternion.LookRotation(point.impulse);
-            var instance = Instantiate(prefab, point.point, rotation);
+        public void ResolveCollision(CollisionInfo collision) {
+            var instance = Instantiate(prefab, collision.position, collision.rotation);
             if (destroyAfterTimeout) {
                 Destroy(instance, timeout);
             }

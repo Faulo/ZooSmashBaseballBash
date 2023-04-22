@@ -13,7 +13,7 @@ namespace ZSBB {
         [SerializeField]
         SpeedTracker topTracker;
 
-        public Vector3 GetVelocityAt(Vector3 position) {
+        Vector3 GetVelocityAt(Vector3 position) {
             float t = InverseLerp(baseTracker.position, topTracker.position, position);
             return Vector3.Lerp(baseTracker.velocity, topTracker.velocity, t);
         }
@@ -26,7 +26,7 @@ namespace ZSBB {
 
         [Header("Events")]
         [SerializeField]
-        UnityEvent<Relocator, Rigidbody, ContactPoint> onCollision = new();
+        UnityEvent<CollisionInfo> onCollision = new();
 
         void OnValidate() {
             if (!attachedRigidbody) {
@@ -44,7 +44,15 @@ namespace ZSBB {
             if (collision.rigidbody is Rigidbody rigidbody) {
                 contactCount = collision.GetContacts(contacts);
                 for (int i = 0; i < contactCount; i++) {
-                    onCollision.Invoke(this, rigidbody, contacts[i]);
+                    var position = contacts[i].point;
+                    var rotation = Quaternion.LookRotation(contacts[i].normal);
+                    var velocity = GetVelocityAt(position);
+                    onCollision.Invoke(new(
+                        rigidbody,
+                        position,
+                        rotation,
+                        velocity
+                    ));
                 }
             }
         }
