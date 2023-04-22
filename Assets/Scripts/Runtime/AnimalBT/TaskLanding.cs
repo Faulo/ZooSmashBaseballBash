@@ -1,18 +1,16 @@
 ﻿using BehaviorTree;
 using UnityEngine;
 
-namespace AnimalBT {
-    public class TaskFlying : Node {
+namespace Runtime.AnimalBT {
+    public class TaskLanding : Node {
         Animator _animator;
-        Transform _transform;
 
-        public TaskFlying(Transform transform) {
-            _transform = transform;
+        public TaskLanding(Transform transform) {
             _animator = transform.GetComponent<Animator>();
         }
 
         public override NodeState Evaluate() {
-            _animator.Play("Base Layer."+AnimationStates.Fly);
+            _animator.Play("Base Layer." + AnimationStates.Roll);
 
             state = NodeState.RUNNING;
             return state;
