@@ -32,7 +32,6 @@ namespace ZSBB.AnimalBT {
                 } else {
                     _animator.PlayInFixedTime(AnimationStates.Idle_A);
                 }
-                _transform.LookAt(player);
                 _rigidbody.velocity = Vector3.SmoothDamp(
                     _rigidbody.velocity,
                     desiredVelocity,

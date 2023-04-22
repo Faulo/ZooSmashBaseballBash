@@ -33,11 +33,13 @@ namespace ZSBB.AnimalBT {
         public Collider attachedCollider;
         public Animator attachedAnimator;
 
+        private Transform player;
+
         protected override void Start() {
             base.Start();
             attachedAgent.Warp(attachedRigidbody.position);
-            attachedAgent.destination = GameObject.Find("P_Player")
-                .transform.position;
+            player = GameObject.Find("P_Player").transform;
+            attachedAgent.destination = player.position;
         }
 
         protected override void FixedUpdate() {
@@ -54,6 +56,10 @@ namespace ZSBB.AnimalBT {
                     new CheckIsHit(transform),
                     new TaskGettingHit(attachedAnimator)
                 ),
+                new Sequence(
+                    new CheckForPlayer(),
+                    new CheckIsNotFacingPlayer(transform),
+                    new TaskFixRotation(transform)),
                 // If Grounded, Find player and goto player
                 new Sequence(
                     new CheckIsGrounded(transform, attachedRigidbody, attachedCollider),
@@ -65,7 +71,7 @@ namespace ZSBB.AnimalBT {
                     new CheckIsLanding(attachedRigidbody),
                     new TaskLanding(attachedAnimator)
                 ),
-                new Selector(
+                new Sequence(
                     new CheckIsGrounded(transform, attachedRigidbody, attachedCollider),
                     new CheckIsLyingDown(transform),
                     new TaskStandUp(attachedAnimator, transform)
