@@ -47,7 +47,7 @@ namespace ZSBB.AnimalBT {
             Node root = new Selector(
                 // If Grounded, Find player and goto player
                 new Sequence(
-                    new CheckIsGrounded(transform),
+                    new CheckIsGrounded(transform, attachedAgent),
                     new CheckForPlayer(attachedAgent),
                     new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
                 ),

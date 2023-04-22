@@ -101,6 +101,7 @@ namespace ZSBB {
 
                 var agent = gameObject.GetOrAddComponent<NavMeshAgent>();
                 agent.agentTypeID = agentTypeID;
+                agent.enabled = false;
                 var settings = NavMesh.GetSettingsByID(agentTypeID);
                 agent.radius = bounds.size.x / 2;
                 agent.height = bounds.size.y;

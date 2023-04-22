@@ -1,22 +1,27 @@
 using UnityEngine;
+using UnityEngine.AI;
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
     public class CheckIsGrounded : Node {
-        Transform _transform;
+        readonly Transform _transform;
+        readonly NavMeshAgent _agent;
 
         float distanceToGround = 1f;
 
-        public CheckIsGrounded(Transform transform) {
+        public CheckIsGrounded(Transform transform, NavMeshAgent agent) {
             _transform = transform;
+            _agent = agent;
         }
 
         public override NodeState Evaluate() {
             if (IsGrounded()) {
+                _agent.enabled = true;
                 state = NodeState.SUCCESS;
                 return state;
             }
 
+            _agent.enabled = false;
             state = NodeState.FAILURE;
             return state;
         }

@@ -12,7 +12,7 @@ namespace ZSBB.AnimalBT {
         public override NodeState Evaluate() {
             object t = GetData("player");
             if (t == null) {
-                var player = GameObject.Find("Player");
+                var player = GameObject.Find("P_Player");
                 if (player) {
                     parent.parent.SetData("player", player.transform);
                     _navMeshAgent.destination = player.transform.position;
