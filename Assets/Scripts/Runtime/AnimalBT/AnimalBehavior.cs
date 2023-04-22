@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public enum AnimationStates {
+    enum AnimationStates {
         Attack,
         Bounce,
         Clicked,
@@ -47,7 +47,7 @@ namespace ZSBB.AnimalBT {
             Node root = new Selector(
                 // If Grounded, Find player and goto player
                 new Sequence(
-                    new CheckIsGrounded(transform, attachedAgent),
+                    new CheckIsGrounded(transform, attachedRigidbody, attachedAgent),
                     new CheckForPlayer(attachedAgent),
                     new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
                 ),

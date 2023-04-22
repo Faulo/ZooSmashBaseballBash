@@ -111,7 +111,7 @@ namespace ZSBB {
             rigidbody.mass = weight;
             rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-            var behavior = gameObject.GetOrAddComponent<AnimalBehavior>();
+            //var behavior = gameObject.GetOrAddComponent<AnimalBehavior>();
         }
     }
 }

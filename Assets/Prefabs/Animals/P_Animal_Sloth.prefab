@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4999296351490415613}
   - component: {fileID: 6795745033402089080}
   - component: {fileID: 3979988766883198559}
-  - component: {fileID: 7082626072303803600}
   - component: {fileID: 8422544617938853872}
   m_Layer: 7
   m_Name: P_Animal_Sloth
@@ -107,28 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.52227193, y: 0.67596406, z: 1.0436522}
   m_Center: {x: 0, y: 0.29017207, z: 0.07886448}
---- !u!195 &7082626072303803600
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8732147926518639443}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.26113597
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.67596406
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &8422544617938853872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,5 +118,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6057f3b29ae23743bff2917b8cb0f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 7082626072303803600}
-  attachedRigidbody: {fileID: 6795745033402089080}
