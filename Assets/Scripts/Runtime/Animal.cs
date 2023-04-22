@@ -1,5 +1,4 @@
 using System.Linq;
-using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using ZSBB.AnimalBT;
@@ -85,26 +84,26 @@ namespace ZSBB {
                 }
             }
 
-            gameObject.layer = layer;
-
             if (model) {
                 var instance = Instantiate(model, transform);
+                instance.layer = layer;
                 instance.hideFlags = HideFlags.DontSave;
                 if (instance.TryGetComponent<Animator>(out var animator)) {
                     animator.runtimeAnimatorController = this.animator;
                 }
 
-                var collider = gameObject.GetOrAddComponent<BoxCollider>();
+                var collider = instance.AddComponent<BoxCollider>();
                 collider.size = bounds.size;
                 collider.center = bounds.center;
                 collider.material = material;
-            }
-            var rigidbody = gameObject.GetOrAddComponent<Rigidbody>();
-            rigidbody.drag = baseDrag;
-            rigidbody.mass = weight;
-            rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-            var behavior = gameObject.GetOrAddComponent<AnimalBehavior>();
+                var rigidbody = instance.AddComponent<Rigidbody>();
+                rigidbody.drag = baseDrag;
+                rigidbody.mass = weight;
+                rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                var behavior = instance.AddComponent<AnimalBehavior>();
+            }
         }
     }
 }

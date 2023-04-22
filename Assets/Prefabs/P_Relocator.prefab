@@ -287,7 +287,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   pullObject: {fileID: 2913397716007809755}
-  pullCastRadius: 1
+  pullCastRadius: 0.5
   pullCastDistance: 100
   pullCastLayers:
     serializedVersion: 2
