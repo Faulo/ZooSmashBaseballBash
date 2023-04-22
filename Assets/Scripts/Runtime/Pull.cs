@@ -4,9 +4,11 @@ using UnityEngine;
 namespace ZSBB {
     sealed class Pull : MonoBehaviour {
         [SerializeField]
-        float forceMultiplier = 100;
+        TractorBeam beam;
         [SerializeField]
-        ForceMode forceMode = ForceMode.Acceleration;
+        ParticleSystem selecting;
+        [SerializeField]
+        ParticleSystem pulling;
 
         [SerializeField, ReadOnly]
         public bool isPulling;
@@ -20,11 +22,22 @@ namespace ZSBB {
             set => transform.position = value;
         }
 
-        void OnTriggerStay(Collider other) {
-            if (isPulling && other.attachedRigidbody is Rigidbody rigidbody) {
-                var direction = transform.position - rigidbody.position;
-                direction.Normalize();
-                rigidbody.AddForce(direction * forceMultiplier, forceMode);
+        void OnValidate() {
+            if (!beam) {
+                TryGetComponent(out beam);
+            }
+        }
+
+        void FixedUpdate() {
+            beam.enabled = isPrepared && isPulling;
+        }
+
+        void Update() {
+            if (selecting.emission is ParticleSystem.EmissionModule sEmission) {
+                sEmission.enabled = isPrepared && !isPulling;
+            }
+            if (pulling.emission is ParticleSystem.EmissionModule pEmission) {
+                pEmission.enabled = isPrepared && isPulling;
             }
         }
     }

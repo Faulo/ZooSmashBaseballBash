@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a715e7966dc82345b7fb7346bb8dc14, type: 3}
   m_Name: SO_Force_Default
   m_EditorClassIdentifier: 
-  forceMultiplier: 5
+  forceMultiplier: 2
   forceMode: 2

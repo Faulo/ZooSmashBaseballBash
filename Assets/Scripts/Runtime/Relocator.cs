@@ -1,3 +1,4 @@
+using MyBox;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -38,8 +39,19 @@ namespace ZSBB {
             }
         }
 
+        void OnEnable() {
+            pullInstance = Instantiate(pullPrefab);
+        }
+
+        void OnDisable() {
+            Destroy(pullInstance);
+        }
+
+
         void FixedUpdate() {
-            UpdatePullPosition();
+            if (!pullInstance.isPulling) {
+                UpdatePullPosition();
+            }
         }
 
         int contactCount;
@@ -64,7 +76,9 @@ namespace ZSBB {
 
         [Header("Pull")]
         [SerializeField]
-        Pull pullObject;
+        Pull pullPrefab;
+        [SerializeField, ReadOnly]
+        Pull pullInstance;
         [SerializeField]
         float pullCastRadius = 1;
         [SerializeField]
@@ -79,20 +93,20 @@ namespace ZSBB {
         void UpdatePullPosition() {
             pullCastCount = Physics.SphereCastNonAlloc(baseTracker.position, pullCastRadius, pullForward, pullCastHits, pullCastDistance, pullCastLayers, QueryTriggerInteraction.Ignore);
 
-            pullObject.isPrepared = pullCastCount > 0;
+            pullInstance.isPrepared = pullCastCount > 0;
 
             float distance = pullCastDistance;
             for (int i = 0; i < pullCastCount; i++) {
                 if (distance > pullCastHits[i].distance) {
                     distance = pullCastHits[i].distance;
-                    pullObject.position = pullCastHits[i].point;
-                    pullObject.normalizedDistance = distance / pullCastDistance;
+                    pullInstance.position = pullCastHits[i].point;
+                    pullInstance.normalizedDistance = distance / pullCastDistance;
                 }
             }
         }
 
         public void OnPull(InputValue value) {
-            pullObject.isPulling = value.isPressed;
+            pullInstance.isPulling = pullInstance.isPrepared && value.isPressed;
         }
     }
 }
