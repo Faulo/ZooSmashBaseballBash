@@ -24,7 +24,7 @@ namespace ZSBB.AnimalBT {
         Spin
     }
 
-    sealed class AnimalBehavior : BTree {
+    sealed class AnimalBehavior : BTree, IRelocationMessages {
         public static float speed = 5f;
         public static float weight = 10f;
 
@@ -57,7 +57,6 @@ namespace ZSBB.AnimalBT {
                 // Gets hit
                 new Sequence(
                     new CheckIsHit(this),
-                    new TaskEnableRotation(attachedRigidbody),
                     new TaskGettingHit(attachedAnimator, this, attachedTracker)
                 ),
                 new Selector(
@@ -100,6 +99,11 @@ namespace ZSBB.AnimalBT {
             );
 
             return root;
+        }
+
+        public void OnHit() {
+            attachedRigidbody.freezeRotation = false;
+            wasHit = true;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace ZSBB.AnimalBT {
     sealed class TaskFixRotation : Node {
         readonly Rigidbody _rigidbody;
 
-        readonly float rotationalSmoothing = 0;
+        readonly float rotationalSmoothing = 0.5f;
 
         Vector2 torque;
 
@@ -15,7 +15,7 @@ namespace ZSBB.AnimalBT {
 
         public override NodeState Evaluate() {
             FixRotation();
-            state = NodeState.SUCCESS;
+            state = NodeState.RUNNING;
             return state;
         }
 

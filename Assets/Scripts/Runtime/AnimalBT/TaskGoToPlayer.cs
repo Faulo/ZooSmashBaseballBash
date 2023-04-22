@@ -20,28 +20,43 @@ namespace ZSBB.AnimalBT {
 
         float velocitySmoothing = 0.5f;
         Vector3 acceleration;
+        float torque;
 
         public override NodeState Evaluate() {
             if (_navMeshAgent.hasPath) {
-                var player = (Transform)GetData("player");
-                var desiredVelocity = Vector3.zero;
-                if (_navMeshAgent.remainingDistance > minDistanceToPlayerBeforeGameOver) {
-                    desiredVelocity = _navMeshAgent.desiredVelocity;
-                    desiredVelocity *= AnimalBehavior.speed;
-                    _animator.PlayInFixedTime(AnimationStates.Walk);
-                } else {
-                    _animator.PlayInFixedTime(AnimationStates.Idle_A);
+                if (GetData("player") is Transform player) {
+                    var desiredVelocity = Vector3.zero;
+                    if (_navMeshAgent.remainingDistance > minDistanceToPlayerBeforeGameOver) {
+                        desiredVelocity = _navMeshAgent.desiredVelocity;
+                        desiredVelocity *= AnimalBehavior.speed;
+                        _animator.PlayInFixedTime(AnimationStates.Walk);
+                    } else {
+                        _animator.PlayInFixedTime(AnimationStates.Idle_A);
+                    }
+                    _rigidbody.velocity = Vector3.SmoothDamp(
+                        _rigidbody.velocity,
+                        desiredVelocity,
+                        ref acceleration,
+                        velocitySmoothing
+                    );
+
+                    LookAt(player);
                 }
-                _rigidbody.velocity = Vector3.SmoothDamp(
-                    _rigidbody.velocity,
-                    desiredVelocity,
-                    ref acceleration,
-                    velocitySmoothing
-                );
             }
 
             state = NodeState.RUNNING;
             return state;
+        }
+
+        void LookAt(Transform target) {
+            var rotation = _rigidbody.rotation.eulerAngles;
+            var targetRotation = Quaternion
+                .LookRotation(target.position - _rigidbody.position)
+                .eulerAngles;
+
+            rotation.y = Mathf.SmoothDampAngle(rotation.y, targetRotation.y, ref torque, velocitySmoothing);
+
+            _rigidbody.rotation = Quaternion.Euler(rotation);
         }
     }
 }

@@ -63,6 +63,7 @@ namespace ZSBB {
         void OnCollisionEnter(Collision collision) {
             if (collision.rigidbody is Rigidbody rigidbody) {
                 contactCount = collision.GetContacts(contacts);
+                rigidbody.SendMessage(nameof(IRelocationMessages.OnHit), SendMessageOptions.DontRequireReceiver);
                 for (int i = 0; i < contactCount; i++) {
                     var position = contacts[i].point;
                     var rotation = Quaternion.LookRotation(contacts[i].normal);

@@ -12,7 +12,7 @@ namespace ZSBB.AnimalBT {
         public override NodeState Evaluate() {
             _rigidbody.freezeRotation = false;
 
-            state = NodeState.SUCCESS;
+            state = NodeState.RUNNING;
             return state;
         }
     }
