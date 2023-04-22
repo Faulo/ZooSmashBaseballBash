@@ -21,7 +21,9 @@ namespace ZSBB {
         readonly HashSet<Rigidbody> rigidbodies = new();
         void Add(Rigidbody rigidbody) {
             rigidbodies.Add(rigidbody);
-            rigidbody.useGravity = false;
+            if (enabled) {
+                rigidbody.useGravity = false;
+            }
         }
         void Remove(Rigidbody rigidbody) {
             rigidbodies.Remove(rigidbody);
@@ -36,6 +38,12 @@ namespace ZSBB {
                     .SwizzleXZ()
                     .WithY(direction.y * forceMultiplier.y);
                 rigidbody.AddForce(force, forceMode);
+            }
+        }
+
+        void OnEnable() {
+            foreach (var rigidbody in rigidbodies) {
+                rigidbody.useGravity = false;
             }
         }
 
