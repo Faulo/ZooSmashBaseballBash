@@ -50,7 +50,7 @@ namespace ZSBB {
 
             UnityEditor.EditorUtility.SetDirty(gameObject);
 
-            SpawnAnimal();
+            isDirty = true;
         }
 
         bool isDirty = false;
@@ -65,24 +65,13 @@ namespace ZSBB {
         }
 #endif
         void Awake() {
-            SpawnAnimal();
+            if (Application.isPlaying) {
+                SpawnAnimal();
+            }
         }
 
         void SpawnAnimal() {
             transform.Clear();
-            foreach (var component in GetComponents<Component>()) {
-                if (component is Transform) {
-                    continue;
-                }
-                if (component is Animal) {
-                    continue;
-                }
-                if (Application.isPlaying) {
-                    Destroy(component);
-                } else {
-                    DestroyImmediate(component);
-                }
-            }
 
             if (model) {
                 var instance = Instantiate(model, transform);

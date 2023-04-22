@@ -51,6 +51,6 @@ MonoBehaviour:
   animator: {fileID: 9100000, guid: 7d9135d9823a8024ebffbcfc14147b18, type: 2}
   weight: 50
   baseDrag: 1
-  material: {fileID: 0}
+  material: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
   layer: 7
   baseSpeed: 0
