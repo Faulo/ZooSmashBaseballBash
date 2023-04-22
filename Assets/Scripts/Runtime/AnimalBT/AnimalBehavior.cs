@@ -25,7 +25,7 @@ namespace ZSBB.AnimalBT {
     }
     sealed class AnimalBehavior : BTree {
 
-        public static float speed = 10f;
+        public static float speed = 5f;
         public static float weight = 10f;
 
         public NavMeshAgent attachedAgent;
@@ -54,6 +54,11 @@ namespace ZSBB.AnimalBT {
                     new CheckForPlayer(attachedAgent),
                     new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
                 ),
+                new Sequence(
+                    new CheckIsLyingDown(attachedRigidbody, transform),
+                    new TaskLanding(attachedAnimator),
+                    new TaskStandUp(attachedAnimator, transform)
+                    ),
                 // If in the Air, play Flying Animation
                 new Sequence(
                     new TaskFlying(attachedAnimator)

@@ -658,6 +658,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4999296351490415613, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: weight
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999296351490415613, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 13400000, guid: 84923736a45c36b4295516ded4296a1d,
+        type: 2}
+    - target: {fileID: 4999296351490415613, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: bounds.m_Center.y
+      value: 0.2901721
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999296351490415613, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: bounds.m_Extent.x
+      value: 0.261136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999296351490415613, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: bounds.m_Extent.y
+      value: 0.33798206
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999296351490415613, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: bounds.m_Extent.z
+      value: 0.52182615
+      objectReference: {fileID: 0}
     - target: {fileID: 7976954140335440633, guid: 5af488f9b6ae54049bb092f6520844b9,
         type: 3}
       propertyPath: m_RootOrder
@@ -666,12 +697,12 @@ PrefabInstance:
     - target: {fileID: 7976954140335440633, guid: 5af488f9b6ae54049bb092f6520844b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.888818
+      value: -28.71
       objectReference: {fileID: 0}
     - target: {fileID: 7976954140335440633, guid: 5af488f9b6ae54049bb092f6520844b9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.926495
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7976954140335440633, guid: 5af488f9b6ae54049bb092f6520844b9,
         type: 3}

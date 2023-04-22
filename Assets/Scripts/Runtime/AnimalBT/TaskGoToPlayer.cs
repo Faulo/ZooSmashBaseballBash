@@ -28,12 +28,11 @@ namespace ZSBB.AnimalBT {
                 if (_navMeshAgent.remainingDistance > minDistanceToPlayerBeforeGameOver) {
                     desiredVelocity = _navMeshAgent.desiredVelocity;
                     desiredVelocity *= AnimalBehavior.speed;
-
                     _animator.PlayInFixedTime(AnimationStates.Walk);
                 } else {
                     _animator.PlayInFixedTime(AnimationStates.Idle_A);
                 }
-
+                _transform.LookAt(player);
                 _rigidbody.velocity = Vector3.SmoothDamp(
                     _rigidbody.velocity,
                     desiredVelocity,
