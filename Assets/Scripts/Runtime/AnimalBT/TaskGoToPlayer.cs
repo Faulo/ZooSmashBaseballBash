@@ -1,17 +1,14 @@
-using System;
-using BehaviorTree;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityObject = UnityEngine.Object;
 
 namespace BehaviorTree {
     public class TaskGoToPlayer : Node {
-        private Transform _transform;
-        private NavMeshAgent _navMeshAgent;
-        private Rigidbody _rigidbody;
-        private Animator _animator;
+        Transform _transform;
+        NavMeshAgent _navMeshAgent;
+        Rigidbody _rigidbody;
+        Animator _animator;
 
-        private float minDistanceToPlayerBeforeGameOver = 5f;
+        float minDistanceToPlayerBeforeGameOver = 5f;
 
         public TaskGoToPlayer(Transform transform, NavMeshAgent navMeshAgent, Rigidbody rigidbody) {
             _transform = transform;
@@ -21,8 +18,8 @@ namespace BehaviorTree {
         }
 
         public override NodeState Evaluate() {
-            Transform player = (Transform)GetData("player");
-            
+            var player = (Transform)GetData("player");
+
             if (Vector3.Distance(_transform.position, player.position) > minDistanceToPlayerBeforeGameOver) {
                 var desiredVelocity = _navMeshAgent.desiredVelocity;
                 _animator.SetBool("Walking", true);

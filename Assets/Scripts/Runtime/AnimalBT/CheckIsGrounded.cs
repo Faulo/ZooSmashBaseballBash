@@ -1,13 +1,12 @@
 ﻿using BehaviorTree;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace AnimalBT {
     public class CheckIsGrounded : Node {
-        private Transform _transform;
-        private Animator _animator;
+        Transform _transform;
+        Animator _animator;
 
-        private float distanceToGround = 1f;
+        float distanceToGround = 1f;
 
         public CheckIsGrounded(Transform transform) {
             _transform = transform;
@@ -26,7 +25,7 @@ namespace AnimalBT {
             return state;
         }
 
-        private bool IsGrounded() {
+        bool IsGrounded() {
             return Physics.Raycast(_transform.position, -Vector3.up, distanceToGround + 0.1f);
         }
     }

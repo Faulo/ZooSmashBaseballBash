@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace AnimalBT {
     public class CheckForPlayer : Node {
-        private NavMeshAgent _navMeshAgent;
+        NavMeshAgent _navMeshAgent;
 
         public CheckForPlayer(NavMeshAgent agent) {
             _navMeshAgent = agent;
