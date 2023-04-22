@@ -1,3 +1,4 @@
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AI;
 using ZSBB.BehaviorTree;
@@ -33,10 +34,10 @@ namespace ZSBB.AnimalBT {
 
         void OnValidate() {
             if (!agent) {
-                TryGetComponent(out agent);
+                transform.TryGetComponentInChildren(out agent);
             }
             if (!attachedRigidbody) {
-                TryGetComponent(out attachedRigidbody);
+                transform.TryGetComponentInChildren(out attachedRigidbody);
             }
         }
 

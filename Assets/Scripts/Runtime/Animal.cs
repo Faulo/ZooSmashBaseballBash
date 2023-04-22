@@ -33,8 +33,6 @@ namespace ZSBB {
         public float baseSpeed;
 
 #if UNITY_EDITOR
-        [SerializeField]
-        bool updatePreviewEveryFrame;
         [ContextMenu(nameof(FindStuff))]
         void FindStuff() {
             string assetName = name.Replace("P_Animal_", "");
@@ -75,7 +73,7 @@ namespace ZSBB {
             isDirty = true;
         }
         void Update() {
-            if (!Application.isPlaying && (isDirty || updatePreviewEveryFrame)) {
+            if (!Application.isPlaying && isDirty) {
                 isDirty = false;
                 SpawnAnimal();
             }

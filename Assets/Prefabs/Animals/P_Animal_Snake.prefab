@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8832169500109171835}
   - component: {fileID: 6582728503372023751}
   - component: {fileID: 8490344773572888247}
+  - component: {fileID: 5749568958437691039}
   m_Layer: 7
   m_Name: P_Animal_Snake
   m_TagString: Untagged
@@ -58,7 +59,6 @@ MonoBehaviour:
   layer: 7
   agentTypeID: 0
   baseSpeed: 0
-  updatePreviewEveryFrame: 0
 --- !u!65 &8832169500109171835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +129,17 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5749568958437691039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8732147926518639443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6057f3b29ae23743bff2917b8cb0f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 8490344773572888247}
+  attachedRigidbody: {fileID: 6582728503372023751}
