@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4447746041542987675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8020492572925256830}
+  - component: {fileID: 8430011589877730568}
+  m_Layer: 0
+  m_Name: P_Animal_TasmanianDevil
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8020492572925256830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447746041542987675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 47
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8430011589877730568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447746041542987675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20069a243abb3d94b8df1ed114668c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 100024, guid: bb1facb7096e03c4aafda4ab1c6c05a6, type: 3}
+  bounds:
+    m_Center: {x: 0, y: 0.29658175, z: -0.0053094095}
+    m_Extent: {x: 0.24849916, y: 0.295976, z: 0.65318054}
+  animator: {fileID: 9100000, guid: 41d36281c0cb84441b464b5f1c9b1c4f, type: 2}
+  weight: 100
+  baseDrag: 1
+  material: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
+  layer: 7
+  agentTypeID: 0
+  baseSpeed: 5
