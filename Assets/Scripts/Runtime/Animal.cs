@@ -91,8 +91,8 @@ namespace ZSBB {
                 collider.material = material;
 
                 var rigidbody = instance.AddComponent<Rigidbody>();
-                rigidbody.automaticCenterOfMass = false;
-                rigidbody.centerOfMass = Vector3.zero;
+                //rigidbody.automaticCenterOfMass = false;
+                //rigidbody.centerOfMass = Vector3.zero;
                 rigidbody.drag = baseDrag;
                 rigidbody.mass = weight;
                 rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
