@@ -23,8 +23,8 @@ namespace ZSBB.AnimalBT {
         Run,
         Spin
     }
-    sealed class AnimalBehavior : BTree {
 
+    sealed class AnimalBehavior : BTree {
         public static float speed = 5f;
         public static float weight = 10f;
 
@@ -49,18 +49,27 @@ namespace ZSBB.AnimalBT {
 
         protected override Node SetupTree() {
             Node root = new Selector(
+                // Gets hit
+                new Sequence(
+                    new CheckIsHit(transform),
+                    new TaskGettingHit(attachedAnimator)
+                ),
                 // If Grounded, Find player and goto player
                 new Sequence(
                     new CheckIsGrounded(transform, attachedRigidbody, attachedCollider),
-                    new CheckForPlayer(attachedAgent),
+                    new CheckForPlayer(),
                     new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
                 ),
                 // If tumbling, reset yourself
                 new Sequence(
-                    new CheckIsLyingDown(attachedRigidbody, transform),
-                    new TaskLanding(attachedAnimator),
+                    new CheckIsLanding(attachedRigidbody),
+                    new TaskLanding(attachedAnimator)
+                ),
+                new Selector(
+                    new CheckIsGrounded(transform, attachedRigidbody, attachedCollider),
+                    new CheckIsLyingDown(transform),
                     new TaskStandUp(attachedAnimator, transform)
-                    ),
+                ),
                 // If in the Air, play Flying Animation
                 new Sequence(
                     new TaskFlying(attachedAnimator)
