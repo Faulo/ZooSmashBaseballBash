@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace ZSBB {
     sealed class Relocator : MonoBehaviour {
+        public static Relocator instance { get; private set; }
         [Header("MonoBehaviour configuration")]
         [SerializeField]
         Rigidbody attachedRigidbody;
@@ -13,7 +14,7 @@ namespace ZSBB {
         [SerializeField]
         SpeedTracker baseTracker;
         [SerializeField]
-        SpeedTracker topTracker;
+        public SpeedTracker topTracker;
 
         Vector3 GetVelocityAt(Vector3 position) {
             float t = InverseLerp(baseTracker.position, topTracker.position, position);
@@ -40,10 +41,12 @@ namespace ZSBB {
         }
 
         void OnEnable() {
+            instance = this;
             pullInstance = Instantiate(pullPrefab);
         }
 
         void OnDisable() {
+            instance = null;
             Destroy(pullInstance);
         }
 

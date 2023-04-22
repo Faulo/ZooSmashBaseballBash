@@ -9878,11 +9878,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7203666345233786578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed7444a1564a8f846b014adb05f3fb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachedCollider: {fileID: 6426551991344470221}
-  forceMultiplier: {x: 5, y: 10}
+  tractorMultiplier: {x: 1, y: 2}
+  relocatorMultiplier: {x: 10, y: 5}
+  homingMultiplier: {x: 15, y: 15}
   forceMode: 5

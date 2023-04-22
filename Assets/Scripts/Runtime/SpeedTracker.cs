@@ -49,8 +49,8 @@ namespace ZSBB {
             m_speed = m_currentVelocity.magnitude;
             m_isMoving = m_speed > m_isMovingThreshold;
             m_direction = m_isMoving
-                ? Vector3.zero
-                : m_currentVelocity.normalized;
+                ? m_currentVelocity.normalized
+                : Vector3.zero;
 
             previousSnapshot = nextSnapshot;
         }

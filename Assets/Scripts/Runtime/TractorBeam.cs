@@ -8,7 +8,11 @@ namespace ZSBB {
         SphereCollider attachedCollider;
         Vector3 worldCenter => transform.position + attachedCollider.center;
         [SerializeField]
-        Vector2 forceMultiplier = Vector2.one;
+        Vector2 tractorMultiplier = Vector2.one;
+        [SerializeField]
+        Vector2 relocatorMultiplier = Vector2.one;
+        [SerializeField]
+        Vector2 homingMultiplier = Vector2.one;
         [SerializeField]
         ForceMode forceMode = ForceMode.Acceleration;
 
@@ -32,13 +36,24 @@ namespace ZSBB {
 
         void FixedUpdate() {
             foreach (var rigidbody in rigidbodies) {
-                var direction = worldCenter - rigidbody.position;
-                direction.Normalize();
-                var force = (direction.SwizzleXZ() * forceMultiplier.x)
-                    .SwizzleXZ()
-                    .WithY(direction.y * forceMultiplier.y);
+                var force = CalculateForce(
+                    (worldCenter - rigidbody.position).normalized,
+                    tractorMultiplier
+                );
+                if (Relocator.instance.topTracker is SpeedTracker tracker && tracker.isMoving) {
+                    force += CalculateForce(tracker.direction, relocatorMultiplier);
+                    var homingDirection = tracker.position - rigidbody.position;
+                    homingDirection.y = homingDirection.SwizzleXZ().magnitude;
+                    force += CalculateForce(homingDirection.normalized, homingMultiplier * tracker.speed);
+                }
                 rigidbody.AddForce(force, forceMode);
             }
+        }
+
+        static Vector3 CalculateForce(Vector3 direction, Vector2 multiplier) {
+            return (direction.SwizzleXZ() * multiplier.x)
+                .SwizzleXZ()
+                .WithY(direction.y * multiplier.y);
         }
 
         void OnEnable() {
