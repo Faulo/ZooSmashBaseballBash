@@ -2,6 +2,7 @@ using System.Linq;
 using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ZSBB {
     [ExecuteAlways]
@@ -9,6 +10,8 @@ namespace ZSBB {
         [Header("Art")]
         [SerializeField]
         GameObject model;
+        [SerializeField]
+        Bounds bounds = new();
         [SerializeField]
         RuntimeAnimatorController animator;
 
@@ -23,10 +26,14 @@ namespace ZSBB {
         int layer;
 
         [Header("Gameplay")]
+        [SerializeField, ReadOnly]
+        int agentTypeID;
         [SerializeField]
         public float baseSpeed;
 
 #if UNITY_EDITOR
+        [SerializeField]
+        bool updatePreviewEveryFrame;
         [ContextMenu(nameof(FindStuff))]
         void FindStuff() {
             string assetName = name.Replace("P_Animal_", "");
@@ -40,25 +47,41 @@ namespace ZSBB {
                 .OfType<GameObject>()
                 .FirstOrDefault(obj => obj.name == modelName);
 
+            bounds = model.GetComponentInChildren<SkinnedMeshRenderer>().bounds;
+
             animator = allAssets
                 .OfType<RuntimeAnimatorController>()
                 .FirstOrDefault();
+
+            agentTypeID = 0;
+            int settingsCount = NavMesh.GetSettingsCount();
+            for (int i = 0; i < settingsCount; i++) {
+                var settings = NavMesh.GetSettingsByIndex(i);
+                string name = NavMesh.GetSettingsNameFromID(settings.agentTypeID);
+                if (name == assetName) {
+                    agentTypeID = settings.agentTypeID;
+                    break;
+                }
+            }
 
             UnityEditor.EditorUtility.SetDirty(gameObject);
 
             SpawnAnimal();
         }
-#endif
 
         bool isDirty = false;
         void OnValidate() {
             isDirty = true;
         }
         void Update() {
-            if (!Application.isPlaying && isDirty) {
+            if (!Application.isPlaying && (isDirty || updatePreviewEveryFrame)) {
                 isDirty = false;
                 SpawnAnimal();
             }
+        }
+#endif
+        void Start() {
+            SpawnAnimal();
         }
 
         void SpawnAnimal() {
@@ -71,13 +94,17 @@ namespace ZSBB {
                 if (instance.TryGetComponent<Animator>(out var animator)) {
                     animator.runtimeAnimatorController = this.animator;
                 }
-                var renderer = instance.GetComponentInChildren<SkinnedMeshRenderer>();
-                var bounds = renderer.bounds;
 
                 var collider = gameObject.GetOrAddComponent<BoxCollider>();
                 collider.size = bounds.size;
                 collider.center = bounds.center;
                 collider.material = material;
+
+                var agent = gameObject.GetOrAddComponent<NavMeshAgent>();
+                agent.agentTypeID = agentTypeID;
+                var settings = NavMesh.GetSettingsByID(agentTypeID);
+                agent.radius = bounds.size.x / 2;
+                agent.height = bounds.size.y;
             }
             var rigidbody = gameObject.GetOrAddComponent<Rigidbody>();
             rigidbody.drag = baseDrag;
