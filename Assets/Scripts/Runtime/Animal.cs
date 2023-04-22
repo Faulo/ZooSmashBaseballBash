@@ -10,11 +10,11 @@ namespace ZSBB {
     sealed class Animal : MonoBehaviour {
         [Header("Art")]
         [SerializeField]
-        GameObject model;
+        public GameObject model;
         [SerializeField]
-        Bounds bounds = new();
+        public Bounds bounds = new();
         [SerializeField]
-        RuntimeAnimatorController animator;
+        public RuntimeAnimatorController animator;
 
         [Header("Physics")]
         [SerializeField]
@@ -22,19 +22,19 @@ namespace ZSBB {
         [SerializeField]
         public float baseDrag = 1;
         [SerializeField]
-        PhysicMaterial material;
+        public PhysicMaterial material;
         [SerializeField, Slothsoft.UnityExtensions.Layer]
-        int layer;
+        public int layer;
 
         [Header("Gameplay")]
         [SerializeField]
         int agentTypeID = 0;
         [SerializeField]
-        public float baseSpeed;
+        public float baseSpeed = 5;
 
 #if UNITY_EDITOR
         [ContextMenu(nameof(FindStuff))]
-        void FindStuff() {
+        public void FindStuff() {
             string assetName = name.Replace("P_Animal_", "");
             var allAssets = UnityEditor.AssetDatabase.GetAllAssetPaths()
                 .Where(path => path.Contains(assetName))
@@ -95,12 +95,6 @@ namespace ZSBB {
                 rigidbody.mass = weight;
                 rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                /*
-                var agentObj = new GameObject(nameof(NavMeshAgent)) {
-                    hideFlags = HideFlags.DontSave
-                };
-                agentObj.transform.parent = transform;
-                //*/
                 var agent = instance.GetOrAddComponent<NavMeshAgent>();
                 agent.agentTypeID = agentTypeID;
                 agent.updatePosition = false;

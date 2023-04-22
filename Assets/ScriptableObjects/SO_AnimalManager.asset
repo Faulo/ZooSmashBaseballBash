@@ -1,0 +1,653 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe05dc2faa5c64479f4e2ef8f0cbbc6, type: 3}
+  m_Name: SO_AnimalManager
+  m_EditorClassIdentifier: 
+  prefabPath: Assets/Prefabs/Animals
+  defaultMaterial: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
+  defaultLayer: 7
+  models:
+    items:
+    - key: ArcticFox
+      value: {fileID: 100000, guid: 6246ef5693d81214a963632316119416, type: 3}
+    - key: Armadillo
+      value: {fileID: 100000, guid: bf4017df3a5f2474783f62d6a970776e, type: 3}
+    - key: Arowana
+      value: {fileID: 100000, guid: ccda0c5ab07a40d49b51ccc70b1c8d01, type: 3}
+    - key: Bat
+      value: {fileID: 100000, guid: e320ef79016e7624283b77814f220fec, type: 3}
+    - key: Beaver
+      value: {fileID: 100000, guid: 877d9429060ffb64ba67e3186775ac0c, type: 3}
+    - key: Bighorn
+      value: {fileID: 100000, guid: 5e615ede1f646b842ba7d99957d10be7, type: 3}
+    - key: Buffalo
+      value: {fileID: 100002, guid: f4365bc6de970c24681da4b974dc7de4, type: 3}
+    - key: Camel
+      value: {fileID: 100002, guid: 43060120b80a03d4ea974058b7b70d2a, type: 3}
+    - key: Carp
+      value: {fileID: 100002, guid: 9b0216fea3dc9a6449a4da059fbc9f4e, type: 3}
+    - key: Cat
+      value: {fileID: 100002, guid: 1b0b46dc3301bde48b59f013024cbec8, type: 3}
+    - key: Cheetah
+      value: {fileID: 100002, guid: a1185cab80882a34f8cc3a5fd484695c, type: 3}
+    - key: Chick
+      value: {fileID: 100002, guid: 30f0be25395649f49b5166ea39770b60, type: 3}
+    - key: Clownfish
+      value: {fileID: 100002, guid: 13b7ab7e8d15f194ca590b1bbd11c121, type: 3}
+    - key: Cobra
+      value: {fileID: 100002, guid: bdb50760327e8c0459c3531509bf1c66, type: 3}
+    - key: Cow
+      value: {fileID: 100002, guid: 677222d2d106c0549a2b52295d1a6063, type: 3}
+    - key: Coyote
+      value: {fileID: 100002, guid: 1c0f07cf60f533c41b81b8eb956365f8, type: 3}
+    - key: Crab
+      value: {fileID: 100006, guid: 1aba32c5628e59e45ba8186dabea29f5, type: 3}
+    - key: Crocodile
+      value: {fileID: 100002, guid: fc8e65efaf8b81842a5ead5fa80a8d1a, type: 3}
+    - key: Crow
+      value: {fileID: 100002, guid: 335f5ed59eb321948b6d852100dcecce, type: 3}
+    - key: Dog
+      value: {fileID: 100002, guid: 3260cc258d691cb49a3217333feb794e, type: 3}
+    - key: Dolphin
+      value: {fileID: 100002, guid: 0394426b821d13549838a36ba29b9c1c, type: 3}
+    - key: Donkey
+      value: {fileID: 100002, guid: f0a350b3856a5a048a4776cf426df46b, type: 3}
+    - key: Dove
+      value: {fileID: 100002, guid: 54cedfb49305ce8408f5d65b39634084, type: 3}
+    - key: Duck
+      value: {fileID: 100002, guid: 4f43d6a18d9aba241a4b608e691e54f6, type: 3}
+    - key: Eagle
+      value: {fileID: 100002, guid: 6fa74f5ef3c4bd341ae16c5d38e340e7, type: 3}
+    - key: Elephant
+      value: {fileID: 100006, guid: 5a0aa835b1fc1414e986cf8d7bdf7e27, type: 3}
+    - key: Emu
+      value: {fileID: 100002, guid: 1554f7ca4d6e8f94cb7abe1d77166b3d, type: 3}
+    - key: Flamingo
+      value: {fileID: 100006, guid: 0b9b54316e031b849a594dbdc380af34, type: 3}
+    - key: Fox
+      value: {fileID: 100006, guid: d6b8493ed68296a46a97c13d64b4d35e, type: 3}
+    - key: Frog
+      value: {fileID: 100002, guid: 3b83f0f6cc95c0a47a86664d6552ef20, type: 3}
+    - key: Gazelle
+      value: {fileID: 100006, guid: 62e291427972b41489eac7ac2db8a8e7, type: 3}
+    - key: GilaMonster
+      value: {fileID: 100002, guid: 88e43a7beca18f443827e84748ced315, type: 3}
+    - key: GoldenEagle
+      value: {fileID: 100006, guid: 0133ae65a76d8624dbfe49a41a424177, type: 3}
+    - key: Goldfish
+      value: {fileID: 100008, guid: f9fd2d1a292ed5e4bab8b7c49e46db91, type: 3}
+    - key: Gorilla
+      value: {fileID: 100006, guid: be9165b58ac33ec4e9151124715b2a86, type: 3}
+    - key: Hen
+      value: {fileID: 100010, guid: 31ae95520022b94419bd7ff96f42aa4e, type: 3}
+    - key: Hippo
+      value: {fileID: 100006, guid: 99ac468b8c27a43418f62068dad1d33e, type: 3}
+    - key: Hog
+      value: {fileID: 100006, guid: 434ffe68bbe5d5b49b417181e5b0cc65, type: 3}
+    - key: Hornbill
+      value: {fileID: 100006, guid: a6ffa2b4a6dc08b4f9d2ac527dd8c79a, type: 3}
+    - key: HornedLizard
+      value: {fileID: 100002, guid: cbcdef5f18cd4d44f88205f580671dc3, type: 3}
+    - key: Hyena
+      value: {fileID: 100006, guid: 02344c5618c3a304aa0647a7deed5119, type: 3}
+    - key: Kangaroo
+      value: {fileID: 100010, guid: d8605bfdbd50adb408290ab6e0d39a47, type: 3}
+    - key: Kingfisher
+      value: {fileID: 100010, guid: 31e8a6bfcf5e41143be7b135ff289d45, type: 3}
+    - key: Koala
+      value: {fileID: 100006, guid: 7d78ef6158e0f8945a61fbdc210f2a10, type: 3}
+    - key: Kookaburra
+      value: {fileID: 100010, guid: 97f5953284670764ea9d2886192db068, type: 3}
+    - key: Lobster
+      value: {fileID: 100018, guid: b85d6d12d2cde26409691714fead0965, type: 3}
+    - key: Manatee
+      value: {fileID: 100006, guid: e7e5c4d7ef0b1e94eaa1ed8517ad09d6, type: 3}
+    - key: Mouse
+      value: {fileID: 100016, guid: 33379e2cb78d908499747259c71391db, type: 3}
+    - key: Orca
+      value: {fileID: 100010, guid: 2d95fbb08fde58d4bbe4fd5615a2af12, type: 3}
+    - key: Ostrich
+      value: {fileID: 100012, guid: 4dcafabdc58a7cb458653951718a74b5, type: 3}
+    - key: Owl
+      value: {fileID: 100008, guid: 8e13910bfbb9c82478e4a77fe7aa9194, type: 3}
+    - key: Ox
+      value: {fileID: 100016, guid: d99b9d31dfc1fbf498ea592de18acf25, type: 3}
+    - key: Panda
+      value: {fileID: 100016, guid: 287c294e3a88bbe4ab4928f2de9d9e6d, type: 3}
+    - key: Parrot
+      value: {fileID: 100012, guid: f47f8f42b058c4b40924795ef832a2b7, type: 3}
+    - key: Peacock
+      value: {fileID: 100010, guid: 6659b74128ca22f4f86d574cbc75ac5e, type: 3}
+    - key: Pelican
+      value: {fileID: 100008, guid: b3c7422cfd993f743847c2b0402d1eb0, type: 3}
+    - key: Penguin
+      value: {fileID: 100010, guid: f59f36aa0db265544b1c07c07a120fa3, type: 3}
+    - key: Pig
+      value: {fileID: 100016, guid: 9c097285657e7bc46893add319710350, type: 3}
+    - key: Pigeon
+      value: {fileID: 100012, guid: a086d54f3a304df4597e7564ac7879e5, type: 3}
+    - key: Platypus
+      value: {fileID: 100012, guid: 7d473f093682b434aa61ccca0b4b163c, type: 3}
+    - key: PolarBear
+      value: {fileID: 100016, guid: 05c4576ac5b0c58449cde65534b5811e, type: 3}
+    - key: Possum
+      value: {fileID: 100016, guid: 43a464c1f4a75c34ba2d2cb8ebffea1a, type: 3}
+    - key: Pronghorn
+      value: {fileID: 100016, guid: 4f99a35d31d972648ac2d330827884fd, type: 3}
+    - key: Quokka
+      value: {fileID: 100016, guid: 3f9e359090fab474695dc3a3be105323, type: 3}
+    - key: Rabbit
+      value: {fileID: 100016, guid: 19fbc6433c996574eb80fb6d445e9968, type: 3}
+    - key: Raccoon
+      value: {fileID: 100016, guid: c64a77e383da2e64b83b666fb6d16b34, type: 3}
+    - key: Rattlesnake
+      value: {fileID: 100010, guid: 13b6a0451d7e10642926dcbb873c0163, type: 3}
+    - key: RedPanda
+      value: {fileID: 100016, guid: e2e04c02ec441bf4abb738b1ab128f6b, type: 3}
+    - key: Reindeer
+      value: {fileID: 100016, guid: 294018a7e39a2d447977790e9e191691, type: 3}
+    - key: Rhino
+      value: {fileID: 100016, guid: 1d0c347a46a324b4b9dd41e3dd73fcad, type: 3}
+    - key: Rooster
+      value: {fileID: 100014, guid: 8374733306c3d3c46aa3e956993d7273, type: 3}
+    - key: SeaHorse
+      value: {fileID: 100012, guid: ca6d8fa571bc42549bd6d3456d8ae7e6, type: 3}
+    - key: SeaLion
+      value: {fileID: 100012, guid: acc1f0cac1b6bf04998fda49b6e47984, type: 3}
+    - key: SeaOtter
+      value: {fileID: 100020, guid: f3cae2569a177f34089a5589f0ae3329, type: 3}
+    - key: Sheep
+      value: {fileID: 100020, guid: c45d1f8012a52b043a37e281472f822d, type: 3}
+    - key: Sloth
+      value: {fileID: 100020, guid: 161403181a0507e42946eb30bc9efa7e, type: 3}
+    - key: Snake
+      value: {fileID: 100014, guid: 8277f09fbcacaca49a93e2521d70600f, type: 3}
+    - key: SnappingTurtle
+      value: {fileID: 100018, guid: 30c0a24f5c3c1fc4ea1dd5ad97c459f1, type: 3}
+    - key: SnowOwl
+      value: {fileID: 100012, guid: f02b59d25e010cd43b3d181392ae9b49, type: 3}
+    - key: SnowWeasel
+      value: {fileID: 100020, guid: 628eb22418ed49745a51cbe46a6f744a, type: 3}
+    - key: Squid
+      value: {fileID: 100008, guid: a0e0df70179b47545bdbe58ea0f24542, type: 3}
+    - key: Swan
+      value: {fileID: 100012, guid: 857f92c0277862447a85df58fb634c12, type: 3}
+    - key: Tapir
+      value: {fileID: 100022, guid: 5f8a0d5f415f19f4baf51980f3508c34, type: 3}
+    - key: TasmanianDevil
+      value: {fileID: 100024, guid: bb1facb7096e03c4aafda4ab1c6c05a6, type: 3}
+    - key: Tiger
+      value: {fileID: 100024, guid: e699a95708748bf48a1d61d04635b7e3, type: 3}
+    - key: Tortoise
+      value: {fileID: 100018, guid: 4bccafe45376a1b4bac2867302e9474f, type: 3}
+    - key: Walrus
+      value: {fileID: 100016, guid: 37752690d920aae47b1eed1da831d5e4, type: 3}
+    - key: Wolf
+      value: {fileID: 100024, guid: 26e6316611a99db4a8ea7a0cd86c094a, type: 3}
+    - key: Wombat
+      value: {fileID: 100020, guid: 53d971cbc865ec04a88d6d1c25ca4db4, type: 3}
+    - key: Zebra
+      value: {fileID: 100024, guid: 85cc1e23436c24c4882712876a5f8334, type: 3}
+  animators:
+    items:
+    - key: ArcticFox
+      value: {fileID: 9100000, guid: 2b25437869ac80d4c98e82561fbc32a9, type: 2}
+    - key: Armadillo
+      value: {fileID: 9100000, guid: ba8d73f9d621ad54baf537bc86f54afb, type: 2}
+    - key: Arowana
+      value: {fileID: 9100000, guid: 7faab5ca17916444eb1f36905cdee8a5, type: 2}
+    - key: Bat
+      value: {fileID: 9100000, guid: 55558844349a1314cbcdf2d7a8bc9679, type: 2}
+    - key: Beaver
+      value: {fileID: 9100000, guid: 51222106d8f6cc94fa52f3ee3ad30608, type: 2}
+    - key: Bighorn
+      value: {fileID: 9100000, guid: 83505a883a4344343ac9cfea9c4d23e1, type: 2}
+    - key: Buffalo
+      value: {fileID: 9100000, guid: 0f1f41bdadf4a4440928248c8226004f, type: 2}
+    - key: Camel
+      value: {fileID: 9100000, guid: 2eade79053c3d934bbc3594cb399542e, type: 2}
+    - key: Carp
+      value: {fileID: 9100000, guid: 9f9b64ca50ab7a542bfa199ac34c555d, type: 2}
+    - key: Cat
+      value: {fileID: 9100000, guid: cc96420140b3c6e4cae96633af1db9d2, type: 2}
+    - key: Cheetah
+      value: {fileID: 9100000, guid: 21a4faafddc9dfe4bbbbd4e70375c16d, type: 2}
+    - key: Chick
+      value: {fileID: 9100000, guid: 719b38dad28df444392e6fc32ec752bc, type: 2}
+    - key: Clownfish
+      value: {fileID: 9100000, guid: f6b1501aa5ea99d4cb6afd5ec7e0ed2d, type: 2}
+    - key: Cobra
+      value: {fileID: 9100000, guid: 988e033884fe0e44b91a86c722a99fc4, type: 2}
+    - key: Cow
+      value: {fileID: 9100000, guid: f845469d9cd3e7043a7f390df0fde4c6, type: 2}
+    - key: Coyote
+      value: {fileID: 9100000, guid: da2aafe4e5660f34f9035302320eea2f, type: 2}
+    - key: Crab
+      value: {fileID: 9100000, guid: 32bc9c7c03521564fb43905447a2b590, type: 2}
+    - key: Crocodile
+      value: {fileID: 9100000, guid: 57bfe0ba04277de47825d2267135e566, type: 2}
+    - key: Crow
+      value: {fileID: 9100000, guid: 7ebc3435d4450b84eab43ba930bff8c1, type: 2}
+    - key: Dog
+      value: {fileID: 9100000, guid: 8ae8684be6985b147a9a79b426d31a24, type: 2}
+    - key: Dolphin
+      value: {fileID: 9100000, guid: 3fcefe53a380d5445bfb4fc5808fa685, type: 2}
+    - key: Donkey
+      value: {fileID: 9100000, guid: 1f9537d0cdb9bc3428c1a04dc1f0eaae, type: 2}
+    - key: Dove
+      value: {fileID: 9100000, guid: 4b70c2e237757854991fe1471dbbbb74, type: 2}
+    - key: Duck
+      value: {fileID: 9100000, guid: 26f0a067e2e0cc246b1e968d833afcb5, type: 2}
+    - key: Eagle
+      value: {fileID: 9100000, guid: 211cfc6d259b7844488aabeebc4ba6e7, type: 2}
+    - key: Elephant
+      value: {fileID: 9100000, guid: d55795cbe939960429100d36b630e756, type: 2}
+    - key: Emu
+      value: {fileID: 9100000, guid: bbd5b20d99de714439ffc4dba0c80e60, type: 2}
+    - key: Flamingo
+      value: {fileID: 9100000, guid: cc80c6bd6fa362d4cb4ce1a3d30a1278, type: 2}
+    - key: Fox
+      value: {fileID: 9100000, guid: 32b27279cd498c74285f17bb1d7260a9, type: 2}
+    - key: Frog
+      value: {fileID: 9100000, guid: e22cb6f7ab789b249816ca000ea22993, type: 2}
+    - key: Gazelle
+      value: {fileID: 9100000, guid: 88dfcf82d1d66b64c9f0cda05c5a2251, type: 2}
+    - key: GilaMonster
+      value: {fileID: 9100000, guid: 19aa33f0e10692448a353d4367fd587c, type: 2}
+    - key: GoldenEagle
+      value: {fileID: 9100000, guid: 903fd86906d38c043803089dc0c7b378, type: 2}
+    - key: Goldfish
+      value: {fileID: 9100000, guid: 8f051d0baf8c36b419bee2b4555a62cd, type: 2}
+    - key: Gorilla
+      value: {fileID: 9100000, guid: dd571565703b8a2419edc81886ef020b, type: 2}
+    - key: Hen
+      value: {fileID: 9100000, guid: 9ed787b3dbf3938488ca3e63b67d1ee5, type: 2}
+    - key: Hippo
+      value: {fileID: 9100000, guid: 7a5ef164b3a61bc4f83dda49097ac1fc, type: 2}
+    - key: Hog
+      value: {fileID: 9100000, guid: 3e1137daf289b734ab69d7bcbcd9a580, type: 2}
+    - key: Hornbill
+      value: {fileID: 9100000, guid: 328723b96d32d234ab6246d7c99b9be0, type: 2}
+    - key: HornedLizard
+      value: {fileID: 9100000, guid: 6c4aabf9bf5438e409b01f0a1a91887a, type: 2}
+    - key: Hyena
+      value: {fileID: 9100000, guid: da758515946a16b43847899ab72d9efe, type: 2}
+    - key: Kangaroo
+      value: {fileID: 9100000, guid: 8e257f1fdabf93b4eac73637bf7b2380, type: 2}
+    - key: Kingfisher
+      value: {fileID: 9100000, guid: a1b119f7800738449884cdb0741fe409, type: 2}
+    - key: Koala
+      value: {fileID: 9100000, guid: ee4716aff66d68a449e9919429a2afc0, type: 2}
+    - key: Kookaburra
+      value: {fileID: 9100000, guid: cd6e6b38ca38b5b4fb26916037d0659f, type: 2}
+    - key: Lobster
+      value: {fileID: 9100000, guid: c31b93436b71adf4585246387e739b18, type: 2}
+    - key: Manatee
+      value: {fileID: 9100000, guid: 6a4856823211304488ab9e80e76bbdc5, type: 2}
+    - key: Mouse
+      value: {fileID: 9100000, guid: 61a3d392e7447ec428edb167a620eb90, type: 2}
+    - key: Orca
+      value: {fileID: 9100000, guid: 2d79098c4a03f71439ec471ab01e1dca, type: 2}
+    - key: Ostrich
+      value: {fileID: 9100000, guid: d9a35d5bd4dda5c4e93012a180fbe96b, type: 2}
+    - key: Owl
+      value: {fileID: 9100000, guid: 201630306ca0348459a0ab3e3f748b56, type: 2}
+    - key: Ox
+      value: {fileID: 9100000, guid: 2d0d47dc2831e2747baa81f834fed82c, type: 2}
+    - key: Panda
+      value: {fileID: 9100000, guid: acd9c14c8e0421541a6af8dfb91107b3, type: 2}
+    - key: Parrot
+      value: {fileID: 9100000, guid: a1761666aae8d8e43b0e0fceb543de31, type: 2}
+    - key: Peacock
+      value: {fileID: 9100000, guid: 4b798f49b1ac84946a6c7b2b2f6d251f, type: 2}
+    - key: Pelican
+      value: {fileID: 9100000, guid: 77b5093536eaa584e80503aec2c2406e, type: 2}
+    - key: Penguin
+      value: {fileID: 9100000, guid: 83af4e9a548bcd6449be82520effc2be, type: 2}
+    - key: Pig
+      value: {fileID: 9100000, guid: 4966955a687e5fe4eb8114e5553f6ef8, type: 2}
+    - key: Pigeon
+      value: {fileID: 9100000, guid: bc6d84534638efa49b15943238d46fb0, type: 2}
+    - key: Platypus
+      value: {fileID: 9100000, guid: 31141f650a6f3374e803c9d1bc322a1c, type: 2}
+    - key: PolarBear
+      value: {fileID: 9100000, guid: ec375d9b5f6cffb4ca16a6034b67ff8b, type: 2}
+    - key: Possum
+      value: {fileID: 9100000, guid: 9150783f3b1f14a4580c93002285ffbb, type: 2}
+    - key: Pronghorn
+      value: {fileID: 9100000, guid: be4e7d0c9274b904b9f96fe1f97b4c69, type: 2}
+    - key: Quokka
+      value: {fileID: 9100000, guid: 60f156a3842aef34980a9d1899098eb7, type: 2}
+    - key: Rabbit
+      value: {fileID: 9100000, guid: 05ad966a6b3793d4290e515b2afb318a, type: 2}
+    - key: Raccoon
+      value: {fileID: 9100000, guid: b8c7e50a258217948a8ddf68425641a7, type: 2}
+    - key: Rattlesnake
+      value: {fileID: 9100000, guid: db031ee8d1cd3ed41ba4c2377632475b, type: 2}
+    - key: RedPanda
+      value: {fileID: 9100000, guid: 10ac6f31eaaf60d4695428a8beb8dc6c, type: 2}
+    - key: Reindeer
+      value: {fileID: 9100000, guid: a86c5aecc7060d64892024881f7665e4, type: 2}
+    - key: Rhino
+      value: {fileID: 9100000, guid: 87c63d590d1aeaf44ac614517d27dacd, type: 2}
+    - key: Rooster
+      value: {fileID: 9100000, guid: a9b14cd5141dca24d88ecf3719d56845, type: 2}
+    - key: SeaHorse
+      value: {fileID: 9100000, guid: c7b088a42fac7be42914c628c8793cb9, type: 2}
+    - key: SeaLion
+      value: {fileID: 9100000, guid: 7e9d8753d263ddf4e9cdad46e52ad4da, type: 2}
+    - key: SeaOtter
+      value: {fileID: 9100000, guid: 0ba21d00c4de483498bb15e6f9844197, type: 2}
+    - key: Sheep
+      value: {fileID: 9100000, guid: b5c87c7e49910b044ae03118ab4e61c2, type: 2}
+    - key: Sloth
+      value: {fileID: 9100000, guid: a036ad55c9a0d9d4ab0c05c5632767eb, type: 2}
+    - key: Snake
+      value: {fileID: 9100000, guid: 7d9135d9823a8024ebffbcfc14147b18, type: 2}
+    - key: SnappingTurtle
+      value: {fileID: 9100000, guid: 5f25992c126032b42be4b11172d066f5, type: 2}
+    - key: SnowOwl
+      value: {fileID: 9100000, guid: 8bf746844dbe5a3479a5f0134f92e8be, type: 2}
+    - key: SnowWeasel
+      value: {fileID: 9100000, guid: 2abb85d5f80ec8e4d8429779f1278f80, type: 2}
+    - key: Squid
+      value: {fileID: 9100000, guid: da74dce2b4129f74e9afb45db65962bf, type: 2}
+    - key: Swan
+      value: {fileID: 9100000, guid: c1e0723a471027a4a9a28d2e177a2f44, type: 2}
+    - key: Tapir
+      value: {fileID: 9100000, guid: eecbeba6bd017a948b9cee43802a2b39, type: 2}
+    - key: TasmanianDevil
+      value: {fileID: 9100000, guid: 41d36281c0cb84441b464b5f1c9b1c4f, type: 2}
+    - key: Tiger
+      value: {fileID: 9100000, guid: d0db1152e3338764aaad1f14c42d3a85, type: 2}
+    - key: Tortoise
+      value: {fileID: 9100000, guid: d056c05e8ba2f2b49bfccdac2d86b5c2, type: 2}
+    - key: Walrus
+      value: {fileID: 9100000, guid: 88f2288a090ead84aab803cdf48767cf, type: 2}
+    - key: Wolf
+      value: {fileID: 9100000, guid: cc24590ee67b4094e8c89a2640619a36, type: 2}
+    - key: Wombat
+      value: {fileID: 9100000, guid: a38cfc3f3b1213d42a1f80855f08ac20, type: 2}
+    - key: Zebra
+      value: {fileID: 9100000, guid: c60bc2238dbafa344b624fdbb1c1c04c, type: 2}
+  prefabs:
+    items:
+    - key: ArcticFox
+      value: {fileID: 369425773101997179, guid: 90a80a5fb23813940add250a9e2892aa,
+        type: 3}
+    - key: Armadillo
+      value: {fileID: 7035402017976938077, guid: f6d55a08789f79d4ebed941848d6a0b2,
+        type: 3}
+    - key: Arowana
+      value: {fileID: 6219891186759273095, guid: d9debeb0bfe390640a518bfd848ac1c2,
+        type: 3}
+    - key: Bat
+      value: {fileID: 3929278498497185271, guid: 3f87c955bec3fa74ba31416fdf35a906,
+        type: 3}
+    - key: Beaver
+      value: {fileID: 8158560077803405375, guid: 409c225fd7f26fe45a8fbbc89f8a1d65,
+        type: 3}
+    - key: Bighorn
+      value: {fileID: 1157514515278571297, guid: 4c62c5bc3f2e5cc469243a9022fb51c8,
+        type: 3}
+    - key: Buffalo
+      value: {fileID: 745700441441298451, guid: 99e914c1fe583114bb67619c096463be,
+        type: 3}
+    - key: Camel
+      value: {fileID: 7345652798790687278, guid: 1a81fb7c4afe9f842baf6bad77bbfd98,
+        type: 3}
+    - key: Carp
+      value: {fileID: 8572774452871192394, guid: 3a51808ccf206454c976f7d707ce33f6,
+        type: 3}
+    - key: Cat
+      value: {fileID: 530785998278922866, guid: 2a9b9653e32c7b043a48efd862bf85a2,
+        type: 3}
+    - key: Cheetah
+      value: {fileID: 8667565190278414817, guid: 0b125bcf71be3ce4b90264e72b51a582,
+        type: 3}
+    - key: Chick
+      value: {fileID: 9139601864929034776, guid: f53d0bd99135bb648afe5db585bf6d1d,
+        type: 3}
+    - key: Clownfish
+      value: {fileID: 6072183265742486405, guid: 758e41e8592ac144293c6be372581f0a,
+        type: 3}
+    - key: Cobra
+      value: {fileID: 8836418876566629070, guid: bec57ae8b39628d41ad99e1dc460b163,
+        type: 3}
+    - key: Cow
+      value: {fileID: 1276134090148815392, guid: cb5bd7fc0e420f642ac6a97e55bf665c,
+        type: 3}
+    - key: Coyote
+      value: {fileID: 4197574417470555038, guid: 09ba4ff0d6c3b814ebf2324fee5f120a,
+        type: 3}
+    - key: Crab
+      value: {fileID: 8283681045610093616, guid: f4fd40c1a5a6b694b95b2661bfd5162f,
+        type: 3}
+    - key: Crocodile
+      value: {fileID: 4877008044603230248, guid: 7fe0a7c10b323f549925418070a4a278,
+        type: 3}
+    - key: Crow
+      value: {fileID: 7824157507016058028, guid: 1c853ebb8652cc74eb1a97952b59501f,
+        type: 3}
+    - key: Dog
+      value: {fileID: 6425558399161032448, guid: 40e7d300213a7874f9c5cf169f877b01,
+        type: 3}
+    - key: Dolphin
+      value: {fileID: 3043922660612416711, guid: dfe3a7c4097888a42857728f6c65e335,
+        type: 3}
+    - key: Donkey
+      value: {fileID: 599764197488529794, guid: c3cdfcf063c012f47be716ccff92ccb7,
+        type: 3}
+    - key: Dove
+      value: {fileID: 9003522598358449684, guid: fc5d96abd49ed3349a94c559871902ee,
+        type: 3}
+    - key: Duck
+      value: {fileID: 5919689789546283725, guid: 2791e57ceaf5bff4a9b7b682e4f727e0,
+        type: 3}
+    - key: Eagle
+      value: {fileID: 553175062693370520, guid: 67b4a1a7604e82c4690ab01be1e3cfbc,
+        type: 3}
+    - key: Elephant
+      value: {fileID: 6372482214549772798, guid: 23f70846f3e693641bc8082c7026b672,
+        type: 3}
+    - key: Emu
+      value: {fileID: 1240806970714925251, guid: cb0a64ab646f4624ead0076ca250dece,
+        type: 3}
+    - key: Flamingo
+      value: {fileID: 214192888257702269, guid: 2ebfddbcff707b2458a6d677384b842f,
+        type: 3}
+    - key: Fox
+      value: {fileID: 3565195184966740592, guid: b5250454195cce8438bd10b6a309fb02,
+        type: 3}
+    - key: Frog
+      value: {fileID: 3727508759680558787, guid: b80a41433b43b0144967dabc2ff27a90,
+        type: 3}
+    - key: Gazelle
+      value: {fileID: 4299678197896209598, guid: b5d402db454f59247bc4a325ce429f45,
+        type: 3}
+    - key: GilaMonster
+      value: {fileID: 8598784743202629461, guid: d152ec178254d3b43b5e7170166de2f9,
+        type: 3}
+    - key: GoldenEagle
+      value: {fileID: 7291763015105031443, guid: ff0478798ccee964b91e49bb8dbbcdc7,
+        type: 3}
+    - key: Goldfish
+      value: {fileID: 3206843120483919067, guid: 91bb824de388b0548872fd77f765500c,
+        type: 3}
+    - key: Gorilla
+      value: {fileID: 5869873218459410278, guid: e96b0612572a2a848a9fe2515ed7aebe,
+        type: 3}
+    - key: Hen
+      value: {fileID: 8860565028256193448, guid: 0f61546f83f4f314cb4f389b465caa05,
+        type: 3}
+    - key: Hippo
+      value: {fileID: 8826394237295656984, guid: fb62b2b25bf4b124b9c68163d9969511,
+        type: 3}
+    - key: Hog
+      value: {fileID: 6538720460607392280, guid: 5df6842ba8b08ba4286bc5e64f09b156,
+        type: 3}
+    - key: Hornbill
+      value: {fileID: 5504186965082967501, guid: 4458b267596dfe542a6f1cf390d62986,
+        type: 3}
+    - key: HornedLizard
+      value: {fileID: 6111102047608958829, guid: 1777bf1b146e35842bd5ef2b1f115b0c,
+        type: 3}
+    - key: Hyena
+      value: {fileID: 1901421279407455463, guid: 299e13b221f29e14a8fa66c54bc1e30f,
+        type: 3}
+    - key: Kangaroo
+      value: {fileID: 4754500164601288391, guid: 5c31723bf8bf59446a0e4b762dcfe31e,
+        type: 3}
+    - key: Kingfisher
+      value: {fileID: 5340220201026394649, guid: 6ad38576aabdd38489e00990c6a1f9c8,
+        type: 3}
+    - key: Koala
+      value: {fileID: 5761287756593138478, guid: 352f2046377307744a17eef3355fc684,
+        type: 3}
+    - key: Kookaburra
+      value: {fileID: 3437365361368159293, guid: 4e0012e2616954943ab5bf2a6cf38f0e,
+        type: 3}
+    - key: Lobster
+      value: {fileID: 8453258026974387029, guid: fab37b40f0dcacf4cbf70118855f1ef8,
+        type: 3}
+    - key: Manatee
+      value: {fileID: 8982240816404065154, guid: 28a4a297ab734b046a1da90563b7e75e,
+        type: 3}
+    - key: Mouse
+      value: {fileID: 6159785240803454693, guid: a895c06d5a5d0d14d9d8cb707147b84d,
+        type: 3}
+    - key: Orca
+      value: {fileID: 7184602404145368093, guid: 9611b363c3db7054eb938ba1a72dc15f,
+        type: 3}
+    - key: Ostrich
+      value: {fileID: 5318565700985495237, guid: bb148b3f1178e004d8151a4e13887fd4,
+        type: 3}
+    - key: Owl
+      value: {fileID: 163335711376002328, guid: d7f062b8cf51ae947bd87d9b73845c5e,
+        type: 3}
+    - key: Ox
+      value: {fileID: 8527404258812424116, guid: a018d89aec1d8a5488775fea0c3cf90e,
+        type: 3}
+    - key: Panda
+      value: {fileID: 9208702227990854992, guid: fd39761a8de81ec4db6ab983f3794fd2,
+        type: 3}
+    - key: Parrot
+      value: {fileID: 5826875059648856870, guid: 0a5f21b552f51b548a410772f3f5cc12,
+        type: 3}
+    - key: Peacock
+      value: {fileID: 1412995115322671882, guid: c04a01b800f36884c87c35780b4c9249,
+        type: 3}
+    - key: Pelican
+      value: {fileID: 2428469884853948176, guid: 4602df19285e7234faaf0c0f1452736d,
+        type: 3}
+    - key: Penguin
+      value: {fileID: 8732147926518639443, guid: fa8a795db9f576b4d900974de4901d18,
+        type: 3}
+    - key: Pig
+      value: {fileID: 5229850191317548761, guid: 93ff4d2c49ac4c144b56386c453496c6,
+        type: 3}
+    - key: Pigeon
+      value: {fileID: 5717420019693725447, guid: cf484dc0a1bdaca41ad1c55887a24ce9,
+        type: 3}
+    - key: Platypus
+      value: {fileID: 4906479561767270891, guid: e95b5208c85f6cd46bd5f7cb2e75d37b,
+        type: 3}
+    - key: PolarBear
+      value: {fileID: 4462979972564394424, guid: 2973f8065c4c91c41910f8d509bb38d2,
+        type: 3}
+    - key: Possum
+      value: {fileID: 7527442480328331117, guid: e0a454bc2d2223340bf9e14057ab2c3b,
+        type: 3}
+    - key: Pronghorn
+      value: {fileID: 2899694530434511695, guid: d1d9d113c8a423544b09472a79277d15,
+        type: 3}
+    - key: Quokka
+      value: {fileID: 6255699010985504364, guid: b2c6b955006ead2459aaffb4eec26f2c,
+        type: 3}
+    - key: Rabbit
+      value: {fileID: 1186569312301011611, guid: 7c3257bd97b80e944b4b9320ba488e97,
+        type: 3}
+    - key: Raccoon
+      value: {fileID: 6641972055627432550, guid: 412950ac7590cd84592213fe71442d4c,
+        type: 3}
+    - key: Rattlesnake
+      value: {fileID: 4937538147312436286, guid: 8f87f7166e1c38f4da905bde286c94c0,
+        type: 3}
+    - key: RedPanda
+      value: {fileID: 1354416711052672490, guid: 35f0542f1745e9545a85991dcefc9996,
+        type: 3}
+    - key: Reindeer
+      value: {fileID: 3651714152946225707, guid: 95bf5acad68db5f439202f7e3ce84d52,
+        type: 3}
+    - key: Rhino
+      value: {fileID: 1527704609003623327, guid: 7845398261eaebc48ba4c883ccfe4701,
+        type: 3}
+    - key: Rooster
+      value: {fileID: 8133875605123222819, guid: 2beed21b42ca9f64b9673d406f5da070,
+        type: 3}
+    - key: SeaHorse
+      value: {fileID: 8629543650439576955, guid: 5a25d6446b89a3948adbdc44caf5edc4,
+        type: 3}
+    - key: SeaLion
+      value: {fileID: 5697403650177021378, guid: 9cf35078d5c950d488b4807aaf4fd26c,
+        type: 3}
+    - key: SeaOtter
+      value: {fileID: 1715783381679939067, guid: 77fae69950b5bcc48958ab4bdbc50773,
+        type: 3}
+    - key: Sheep
+      value: {fileID: 537439387886585866, guid: 789a597ebc5a99445a2941e1001a048c,
+        type: 3}
+    - key: Sloth
+      value: {fileID: 8732147926518639443, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+    - key: Snake
+      value: {fileID: 8732147926518639443, guid: 359cebd00d01ca04d9536cad6c36dffa,
+        type: 3}
+    - key: SnappingTurtle
+      value: {fileID: 8104408960892680226, guid: d38c8384b58507345b879d31e5269245,
+        type: 3}
+    - key: SnowOwl
+      value: {fileID: 6540512138947481641, guid: 40c3772126017f4478e35809f08bcb74,
+        type: 3}
+    - key: SnowWeasel
+      value: {fileID: 2871094828035875489, guid: 55d1f56e4cb0cd547a77c1eb9aba8180,
+        type: 3}
+    - key: Squid
+      value: {fileID: 7438083997455548433, guid: f1b4ddcbea76d704789a5d3c9276bb65,
+        type: 3}
+    - key: Swan
+      value: {fileID: 4815508101284714047, guid: 3e13968fc79659045965cde9551f1396,
+        type: 3}
+    - key: Tapir
+      value: {fileID: 8348078089718952947, guid: bf5de9e6f82d57c4281b1c46626c65c4,
+        type: 3}
+    - key: TasmanianDevil
+      value: {fileID: 4447746041542987675, guid: 8db9a1cabb9e36940afcd5f3b393cb92,
+        type: 3}
+    - key: Tiger
+      value: {fileID: 3312850030655685249, guid: 0ec87b99374afe540b222b75547e2681,
+        type: 3}
+    - key: Tortoise
+      value: {fileID: 2713387383297326346, guid: 830a2bd8b2100974e8e6f1d7354cb2df,
+        type: 3}
+    - key: Walrus
+      value: {fileID: 8239448978782287011, guid: 694d8daab9f51674e89e11e75c39af6e,
+        type: 3}
+    - key: Wolf
+      value: {fileID: 990294242638117877, guid: b5d06c39adfee944d8c3f6bcfba1e99e,
+        type: 3}
+    - key: Wombat
+      value: {fileID: 3648640223985900315, guid: ad942529a5806cc4fb58d26a520816b9,
+        type: 3}
+    - key: Zebra
+      value: {fileID: 2163249104749674978, guid: f85f922dfa27d154f9757ed87edbd5b2,
+        type: 3}
