@@ -24,7 +24,11 @@ namespace ZSBB.AnimalBT {
         }
 
         private bool IsLyingDown() {
-            return (_rigidbody.velocity.magnitude < 1f) && (_transform.rotation.eulerAngles != Vector3.zero);
+            if ((!(_rigidbody.velocity.y < 0.7f)) && (!(_rigidbody.velocity.y > -0.7f))) {
+                return false;
+            }
+
+            return _transform.rotation.eulerAngles != Vector3.zero;
         }
     }
 }

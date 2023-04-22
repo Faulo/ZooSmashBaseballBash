@@ -54,6 +54,7 @@ namespace ZSBB.AnimalBT {
                     new CheckForPlayer(attachedAgent),
                     new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
                 ),
+                // If tumbling, reset yourself
                 new Sequence(
                     new CheckIsLyingDown(attachedRigidbody, transform),
                     new TaskLanding(attachedAnimator),
