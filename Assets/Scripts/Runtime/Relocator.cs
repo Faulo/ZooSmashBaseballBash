@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace ZSBB {
     sealed class Relocator : MonoBehaviour {
@@ -12,6 +13,8 @@ namespace ZSBB {
         SpeedTracker baseTracker;
         [SerializeField]
         SpeedTracker topTracker;
+        [SerializeField]
+        GameObject pullObject;
 
         Vector3 GetVelocityAt(Vector3 position) {
             float t = InverseLerp(baseTracker.position, topTracker.position, position);
@@ -55,6 +58,10 @@ namespace ZSBB {
                     ));
                 }
             }
+        }
+
+        public void OnPull(InputValue value) {
+            pullObject.SetActive(value.isPressed);
         }
     }
 }

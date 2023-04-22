@@ -1,0 +1,34 @@
+{
+    "name": "CONF_Controls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "50f0e9a3-ad9c-476b-9651-7bd674524665",
+            "actions": [
+                {
+                    "name": "Pull",
+                    "type": "Value",
+                    "id": "83235538-a88e-4876-8e7c-fc21fc0d1619",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2572b324-4577-4dd2-a247-4ce5f42f4bb0",
+                    "path": "<ViveController>/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pull",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
