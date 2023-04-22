@@ -1,6 +1,8 @@
 using System.Linq;
+using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.AI;
 using ZSBB.AnimalBT;
 
 namespace ZSBB {
@@ -25,6 +27,8 @@ namespace ZSBB {
         int layer;
 
         [Header("Gameplay")]
+        [SerializeField]
+        int agentTypeID = 0;
         [SerializeField]
         public float baseSpeed;
 
@@ -77,9 +81,9 @@ namespace ZSBB {
                 var instance = Instantiate(model, transform);
                 instance.layer = layer;
                 instance.hideFlags = HideFlags.DontSave;
-                if (instance.TryGetComponent<Animator>(out var animator)) {
-                    animator.runtimeAnimatorController = this.animator;
-                }
+
+                var animator = instance.GetComponent<Animator>();
+                animator.runtimeAnimatorController = this.animator;
 
                 var collider = instance.AddComponent<BoxCollider>();
                 collider.size = bounds.size;
@@ -91,7 +95,20 @@ namespace ZSBB {
                 rigidbody.mass = weight;
                 rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
+                var agentObj = new GameObject(nameof(NavMeshAgent)) {
+                    hideFlags = HideFlags.DontSave
+                };
+                agentObj.transform.parent = transform;
+                var agent = agentObj.GetOrAddComponent<NavMeshAgent>();
+                agent.agentTypeID = agentTypeID;
+                var settings = NavMesh.GetSettingsByID(agentTypeID);
+                agent.radius = bounds.size.x / 2;
+                agent.height = bounds.size.y;
+
                 var behavior = instance.AddComponent<AnimalBehavior>();
+                behavior.attachedAnimator = animator;
+                behavior.attachedRigidbody = rigidbody;
+                behavior.attachedAgent = agent;
             }
         }
     }

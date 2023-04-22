@@ -8,7 +8,7 @@ namespace ZSBB.BehaviorTree {
             _root = SetupTree();
         }
 
-        protected void FixedUpdate() {
+        protected virtual void FixedUpdate() {
             _root.Evaluate();
         }
 

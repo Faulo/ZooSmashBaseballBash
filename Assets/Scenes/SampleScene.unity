@@ -1674,6 +1674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Animal_Sloth
       objectReference: {fileID: 0}
+    - target: {fileID: 8732147926518639443, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1964,6 +1969,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_Animal_Penguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732147926518639443, guid: fa8a795db9f576b4d900974de4901d18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2337,6 +2347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_Animal_Sloth (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732147926518639443, guid: 5af488f9b6ae54049bb092f6520844b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

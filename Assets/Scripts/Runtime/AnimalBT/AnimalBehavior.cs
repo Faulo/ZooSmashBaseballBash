@@ -1,4 +1,3 @@
-using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AI;
 using ZSBB.BehaviorTree;
@@ -29,18 +28,22 @@ namespace ZSBB.AnimalBT {
         public static float speed = 1f;
         public static float weight = 10f;
 
-        NavMeshAgent attachedAgent;
-        Rigidbody attachedRigidbody;
-        Animator attachedAnimator;
+        public NavMeshAgent attachedAgent;
+        public Rigidbody attachedRigidbody;
+        public Animator attachedAnimator;
 
         protected override void Start() {
-            UpdateComponents();
+            attachedAgent.updatePosition = false;
+            attachedAgent.Warp(attachedRigidbody.position);
             base.Start();
         }
-        void UpdateComponents() {
-            transform.TryGetComponentInChildren(out attachedAgent);
-            transform.TryGetComponentInChildren(out attachedRigidbody);
-            transform.TryGetComponentInChildren(out attachedAnimator);
+
+        protected override void FixedUpdate() {
+            base.FixedUpdate();
+            if (attachedAgent.hasPath) {
+                Debug.Log($"desiredVelocity is {attachedAgent.desiredVelocity}, warping to {attachedRigidbody.position}");
+                attachedAgent.nextPosition = attachedRigidbody.position;
+            }
         }
 
         protected override Node SetupTree() {

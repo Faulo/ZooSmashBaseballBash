@@ -18,27 +18,19 @@ namespace ZSBB.AnimalBT {
             _animator = animator;
         }
 
-        readonly NavMeshPath path = new();
-        Vector3[] corners = new Vector3[1];
         public override NodeState Evaluate() {
-            var player = (Transform)GetData("player");
-            if (NavMesh.CalculatePath(_transform.position, player.position, -1, path)) {
-                corners = path.corners;
-                if (corners.Length > 0) {
-                    var nextPosition = corners[0];
+            if (_navMeshAgent.hasPath) {
+                var player = (Transform)GetData("player");
+                if (Vector3.Distance(_transform.position, player.position) > minDistanceToPlayerBeforeGameOver) {
+                    var desiredVelocity = _navMeshAgent.desiredVelocity;
+                    Debug.Log(desiredVelocity);
+                    _animator.PlayInFixedTime(AnimationStates.Walk);
+                    _rigidbody.AddForce(force: desiredVelocity.normalized * AnimalBehavior.speed);
+                } else {
+                    _animator.PlayInFixedTime(AnimationStates.Idle_A);
+                    _rigidbody.AddForce(Vector3.zero);
                 }
             }
-
-            /*
-            if (Vector3.Distance(_transform.position, player.position) > minDistanceToPlayerBeforeGameOver) {
-                var desiredVelocity = _navMeshAgent.desiredVelocity;
-                _animator.PlayInFixedTime(AnimationStates.Walk);
-                _rigidbody.AddForce(force: desiredVelocity.normalized * AnimalBehavior.speed);
-            } else {
-                _animator.PlayInFixedTime(AnimationStates.Idle_A);
-                _rigidbody.AddForce(Vector3.zero);
-            }
-            //*/
 
             state = NodeState.RUNNING;
             return state;
