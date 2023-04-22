@@ -91,6 +91,8 @@ namespace ZSBB {
                 collider.material = material;
 
                 var rigidbody = instance.AddComponent<Rigidbody>();
+                rigidbody.automaticCenterOfMass = false;
+                rigidbody.centerOfMass = Vector3.zero;
                 rigidbody.drag = baseDrag;
                 rigidbody.mass = weight;
                 rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -104,11 +106,14 @@ namespace ZSBB {
                 agent.radius = bounds.size.x / 2;
                 agent.height = bounds.size.y;
 
+                var tracker = instance.AddComponent<SpeedTracker>();
+
                 var behavior = instance.AddComponent<AnimalBehavior>();
                 behavior.attachedAnimator = animator;
                 behavior.attachedRigidbody = rigidbody;
                 behavior.attachedCollider = collider;
                 behavior.attachedAgent = agent;
+                behavior.attachedTracker = tracker;
             }
         }
         static (int direction, float radius, float height) GetCapsule(in Bounds bounds) {

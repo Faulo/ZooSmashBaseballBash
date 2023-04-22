@@ -2,27 +2,29 @@
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class CheckIsLyingDown : Node {
-        private Transform _transform;
+    sealed class CheckIsLyingDown : Node {
+        readonly Transform _transform;
+
+        readonly float maxAngle = 0.125f;
 
         public CheckIsLyingDown(Transform transform) {
             _transform = transform;
         }
 
         public override NodeState Evaluate() {
-            if (IsLyingDown()) {
-                //_agent.enabled = true;
-                state = NodeState.SUCCESS;
+            if (IsUpright()) {
+                state = NodeState.FAILURE;
                 return state;
             }
 
-            //_agent.enabled = false;
-            state = NodeState.FAILURE;
+            state = NodeState.SUCCESS;
             return state;
         }
 
-        private bool IsLyingDown() {
-            return _transform.rotation.eulerAngles != Vector3.zero;
+        bool IsUpright() {
+            var rotation = _transform.eulerAngles;
+            return Mathf.DeltaAngle(rotation.x, 0) < maxAngle
+                && Mathf.DeltaAngle(rotation.z, 0) < maxAngle;
         }
     }
 }

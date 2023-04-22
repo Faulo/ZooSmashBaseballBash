@@ -30,10 +30,13 @@ namespace ZSBB.AnimalBT {
 
         public NavMeshAgent attachedAgent;
         public Rigidbody attachedRigidbody;
-        public Collider attachedCollider;
+        public CapsuleCollider attachedCollider;
         public Animator attachedAnimator;
+        public SpeedTracker attachedTracker;
 
-        private Transform player;
+        public bool wasHit;
+
+        Transform player;
 
         protected override void Start() {
             base.Start();
@@ -53,32 +56,46 @@ namespace ZSBB.AnimalBT {
             Node root = new Selector(
                 // Gets hit
                 new Sequence(
-                    new CheckIsHit(transform),
-                    new TaskGettingHit(attachedAnimator)
+                    new CheckIsHit(this),
+                    new TaskEnableRotation(attachedRigidbody),
+                    new TaskGettingHit(attachedAnimator, this, attachedTracker)
                 ),
-                new Sequence(
-                    new CheckForPlayer(),
-                    new CheckIsNotFacingPlayer(transform),
-                    new TaskFixRotation(transform)),
-                // If Grounded, Find player and goto player
-                new Sequence(
-                    new CheckIsGrounded(transform, attachedRigidbody, attachedCollider),
-                    new CheckForPlayer(),
-                    new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
-                ),
-                // If tumbling, reset yourself
-                new Sequence(
-                    new CheckIsLanding(attachedRigidbody),
-                    new TaskLanding(attachedAnimator)
-                ),
-                new Sequence(
-                    new CheckIsGrounded(transform, attachedRigidbody, attachedCollider),
-                    new CheckIsLyingDown(transform),
-                    new TaskStandUp(attachedAnimator, transform)
-                ),
-                // If in the Air, play Flying Animation
-                new Sequence(
-                    new TaskFlying(attachedAnimator)
+                new Selector(
+                    new Sequence(
+                        new CheckIsGrounded(transform, attachedCollider),
+                        new Selector(
+                            // first, if we can rotate, we must become upright and disable rotation
+                            new Sequence(
+                                new CheckCanRotate(attachedRigidbody),
+                                new TaskFixRotation(attachedRigidbody),
+                                new Selector(
+                                    new Sequence(
+                                        new CheckIsLyingDown(transform),
+                                        new TaskStandUp(attachedAnimator)
+                                    ),
+                                    new Sequence(
+                                        new TaskDisableRotation(attachedRigidbody)
+                                    )
+                                )
+                            ),
+                            // now we're good to go
+                            new Sequence(
+                                new Selector(
+                                    new Sequence(
+                                        new CheckForPlayer(),
+                                        new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
+                                    ),
+                                    // idle here!
+                                    new Sequence()
+                                )
+                            )
+                        )
+                    ),
+                    // if we got airborne somehow, we should start rigidbodying
+                    new Sequence(
+                        new TaskEnableRotation(attachedRigidbody),
+                        new TaskFlying(attachedAnimator)
+                    )
                 )
             );
 

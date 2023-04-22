@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.AI;
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class CheckForPlayer : Node {
-        
+    sealed class CheckForPlayer : Node {
+
         public override NodeState Evaluate() {
             object t = GetData("player");
             if (t == null) {

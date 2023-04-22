@@ -2,33 +2,30 @@
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class TaskFixRotation : Node {
-        private Transform _transform;
+    sealed class TaskFixRotation : Node {
+        readonly Rigidbody _rigidbody;
 
-        public TaskFixRotation(Transform transform) {
-            _transform = transform;
+        readonly float rotationalSmoothing = 0;
+
+        Vector2 torque;
+
+        public TaskFixRotation(Rigidbody rigidbody) {
+            _rigidbody = rigidbody;
         }
 
         public override NodeState Evaluate() {
-            var player = (Transform)GetData("player");
-            FixRotation(player);
+            FixRotation();
             state = NodeState.SUCCESS;
             return state;
         }
 
-        private void FixRotation(Transform target) {
-            float smooth = 0.3f;
-            float distance = 5.0f;
-            float yVelocity = 0.0f;
-            
-            // Damp angle from current y-angle towards target y-angle
-            float yAngle = Mathf.SmoothDampAngle(_transform.eulerAngles.y, target.eulerAngles.y, ref yVelocity, smooth);
-            // Position at the target
-            Vector3 position = target.position;
-            // Then offset by distance behind the new angle
-            position += Quaternion.Euler(0, yAngle, 0) * new Vector3(0, 0, -distance);
-            // Apply the position
-            _transform.position = position;
+        void FixRotation() {
+            var rotation = _rigidbody.rotation.eulerAngles;
+
+            rotation.x = Mathf.SmoothDampAngle(rotation.x, 0, ref torque.x, rotationalSmoothing);
+            rotation.z = Mathf.SmoothDampAngle(rotation.z, 0, ref torque.y, rotationalSmoothing);
+
+            _rigidbody.MoveRotation(Quaternion.Euler(rotation));
         }
     }
 }

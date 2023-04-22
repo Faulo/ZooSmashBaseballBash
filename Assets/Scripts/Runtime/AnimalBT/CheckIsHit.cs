@@ -1,18 +1,15 @@
-﻿using UnityEngine;
-using ZSBB.BehaviorTree;
+﻿using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class CheckIsHit : Node {
-        private Transform _transform;
+    sealed class CheckIsHit : Node {
+        readonly AnimalBehavior _behavior;
 
-        public CheckIsHit(Transform transform) {
-            _transform = transform;
+        public CheckIsHit(AnimalBehavior behavior) {
+            _behavior = behavior;
         }
 
         public override NodeState Evaluate() {
-            var relocator = GameObject.Find("P_Relocator");
-
-            if (Vector3.Distance(_transform.position, relocator.transform.position) < 0.2f) {
+            if (_behavior.wasHit) {
                 state = NodeState.SUCCESS;
                 return state;
             }

@@ -2,17 +2,16 @@ using UnityEngine;
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class CheckIsGrounded : Node {
+    sealed class CheckIsGrounded : Node {
         readonly Transform _transform;
-        readonly Rigidbody _rigidbody;
-        readonly Collider _collider;
+        readonly CapsuleCollider _collider;
 
-        readonly float distanceToGround = 0.1f;
+        readonly float maxDistance = 8f;
+        readonly float distanceToGround = 0.125f;
         readonly LayerMask groundLayers = LayerMask.GetMask("Environment");
 
-        public CheckIsGrounded(Transform transform, Rigidbody rigidbody, Collider collider) {
+        public CheckIsGrounded(Transform transform, CapsuleCollider collider) {
             _transform = transform;
-            _rigidbody = rigidbody;
             _collider = collider;
         }
 
@@ -27,16 +26,14 @@ namespace ZSBB.AnimalBT {
         }
 
         bool IsGrounded() {
-            if (!Physics.Raycast(_rigidbody.worldCenterOfMass, Vector3.down, out var hit, groundLayers)) {
+            if (!Physics.Raycast(_transform.position + _collider.center, Vector3.down, out var hit, maxDistance, groundLayers)) {
                 return false;
             }
 
-            if (!Physics.ComputePenetration(
-                _collider, _transform.position, _transform.rotation,
-                hit.collider, hit.transform.position, hit.transform.rotation,
-                out var direction, out float distance)) {
-                return false;
-            }
+            float distance = Vector3.Distance(
+                _collider.ClosestPoint(hit.point),
+                hit.collider.ClosestPoint(hit.point)
+            );
 
             return distance < distanceToGround;
         }

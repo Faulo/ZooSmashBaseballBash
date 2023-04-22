@@ -1,5 +1,5 @@
 namespace ZSBB.BehaviorTree {
-    public class Selector : Node {
+    sealed class Selector : Node {
         public Selector() : base() { }
         public Selector(params Node[] children) : base(children) { }
 

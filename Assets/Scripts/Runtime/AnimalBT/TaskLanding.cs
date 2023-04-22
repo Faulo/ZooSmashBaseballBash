@@ -2,8 +2,8 @@ using UnityEngine;
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class TaskLanding : Node {
-        Animator _animator;
+    sealed class TaskLanding : Node {
+        readonly Animator _animator;
 
         public TaskLanding(Animator animator) {
             _animator = animator;

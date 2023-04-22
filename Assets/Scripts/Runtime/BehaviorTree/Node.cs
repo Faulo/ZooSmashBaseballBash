@@ -7,7 +7,7 @@ namespace ZSBB.BehaviorTree {
         SUCCESS,
         FAILURE
     }
-    public class Node {
+    abstract class Node {
         protected NodeState state;
 
         public Node parent;
@@ -21,13 +21,9 @@ namespace ZSBB.BehaviorTree {
         }
         public Node(params Node[] children) {
             foreach (var child in children) {
-                _Attach(child);
+                child.parent = this;
             }
             this.children = children;
-        }
-
-        void _Attach(Node node) {
-            node.parent = this;
         }
 
         public virtual NodeState Evaluate() => NodeState.FAILURE;

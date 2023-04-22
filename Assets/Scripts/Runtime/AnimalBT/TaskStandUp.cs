@@ -2,18 +2,16 @@
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class TaskStandUp : Node {
-        Animator _animator;
-        private Transform _transform;
+    sealed class TaskStandUp : Node {
+        readonly Animator _animator;
 
-        public TaskStandUp(Animator animator, Transform transform) {
+        public TaskStandUp(Animator animator) {
             _animator = animator;
-            _transform = transform;
         }
 
         public override NodeState Evaluate() {
             _animator.PlayInFixedTime(AnimationStates.Roll);
-            
+
             state = NodeState.RUNNING;
             return state;
         }

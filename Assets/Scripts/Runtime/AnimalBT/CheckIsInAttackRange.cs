@@ -2,10 +2,10 @@
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    sealed class CheckIsLanding : Node {
+    sealed class CheckIsInAttackRange : Node {
         readonly Rigidbody _rigidbody;
 
-        public CheckIsLanding(Rigidbody rigidbody) {
+        public CheckIsInAttackRange(Rigidbody rigidbody) {
             _rigidbody = rigidbody;
         }
 

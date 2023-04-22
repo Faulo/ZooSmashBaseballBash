@@ -14,7 +14,7 @@ namespace ZSBB {
                 yield return ("$out", "1");
                 yield return ("$total", "1");
 
-                yield return ("$stability", "🧱🧱🧱");
+                yield return ("$stability", "x"); // 🧱
                 yield return ("$timer", "0:59");
             }
         }

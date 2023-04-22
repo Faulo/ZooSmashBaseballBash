@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace ZSBB.BehaviorTree {
-    public abstract class BTree : MonoBehaviour {
+    abstract class BTree : MonoBehaviour {
         Node _root = null;
 
         protected virtual void Start() {

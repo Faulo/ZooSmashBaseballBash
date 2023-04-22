@@ -2,8 +2,8 @@
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class CheckIsNotFacingPlayer : Node {
-        private Transform _transform;
+    sealed class CheckIsNotFacingPlayer : Node {
+        readonly Transform _transform;
 
         public CheckIsNotFacingPlayer(Transform transform) {
             _transform = transform;
@@ -19,7 +19,7 @@ namespace ZSBB.AnimalBT {
             return state;
         }
 
-        private bool IsAligned() {
+        bool IsAligned() {
             var player = (Transform)GetData("player");
             float angle = 10f;
             if (Vector3.Angle(player.transform.forward, _transform.position - player.transform.position) < angle) {

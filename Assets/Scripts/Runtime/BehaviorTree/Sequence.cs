@@ -1,5 +1,5 @@
 namespace ZSBB.BehaviorTree {
-    public class Sequence : Node {
+    sealed class Sequence : Node {
         public Sequence() : base() { }
         public Sequence(params Node[] children) : base(children) { }
 

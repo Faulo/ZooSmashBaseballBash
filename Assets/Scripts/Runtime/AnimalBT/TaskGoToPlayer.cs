@@ -3,13 +3,13 @@ using UnityEngine.AI;
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class TaskGoToPlayer : Node {
-        Transform _transform;
-        NavMeshAgent _navMeshAgent;
-        Rigidbody _rigidbody;
-        Animator _animator;
+    sealed class TaskGoToPlayer : Node {
+        readonly Transform _transform;
+        readonly NavMeshAgent _navMeshAgent;
+        readonly Rigidbody _rigidbody;
+        readonly Animator _animator;
 
-        float minDistanceToPlayerBeforeGameOver = 5f;
+        readonly float minDistanceToPlayerBeforeGameOver = 5f;
 
         public TaskGoToPlayer(Transform transform, NavMeshAgent navMeshAgent, Rigidbody rigidbody, Animator animator) {
             _transform = transform;
@@ -18,7 +18,7 @@ namespace ZSBB.AnimalBT {
             _animator = animator;
         }
 
-        float velocitySmoothing = 1;
+        float velocitySmoothing = 0.5f;
         Vector3 acceleration;
 
         public override NodeState Evaluate() {

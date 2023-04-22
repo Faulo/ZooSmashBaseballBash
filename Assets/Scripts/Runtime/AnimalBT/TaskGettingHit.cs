@@ -2,15 +2,23 @@
 using ZSBB.BehaviorTree;
 
 namespace ZSBB.AnimalBT {
-    public class TaskGettingHit : Node {
-        private Animator _animator;
+    sealed class TaskGettingHit : Node {
+        readonly Animator _animator;
+        readonly AnimalBehavior _behavior;
+        readonly SpeedTracker _tracker;
 
-        public TaskGettingHit(Animator animator) {
+        public TaskGettingHit(Animator animator, AnimalBehavior behavior, SpeedTracker tracker) {
             _animator = animator;
+            _behavior = behavior;
+            _tracker = tracker;
         }
 
         public override NodeState Evaluate() {
-            _animator.PlayInFixedTime(AnimationStates.Death);
+            if (_tracker.isMoving) {
+                _animator.PlayInFixedTime(AnimationStates.Death);
+            } else {
+                _behavior.wasHit = false;
+            }
 
             state = NodeState.RUNNING;
             return state;
