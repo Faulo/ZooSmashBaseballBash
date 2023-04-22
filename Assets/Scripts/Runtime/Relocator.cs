@@ -13,8 +13,6 @@ namespace ZSBB {
         SpeedTracker baseTracker;
         [SerializeField]
         SpeedTracker topTracker;
-        [SerializeField]
-        GameObject pullObject;
 
         Vector3 GetVelocityAt(Vector3 position) {
             float t = InverseLerp(baseTracker.position, topTracker.position, position);
@@ -40,6 +38,10 @@ namespace ZSBB {
             }
         }
 
+        void FixedUpdate() {
+            UpdatePullPosition();
+        }
+
         int contactCount;
         ContactPoint[] contacts = new ContactPoint[8];
 
@@ -60,8 +62,37 @@ namespace ZSBB {
             }
         }
 
+        [Header("Pull")]
+        [SerializeField]
+        Pull pullObject;
+        [SerializeField]
+        float pullCastRadius = 1;
+        [SerializeField]
+        float pullCastDistance = 100;
+        [SerializeField]
+        LayerMask pullCastLayers = default;
+
+        Vector3 pullForward => (topTracker.position - baseTracker.position).normalized;
+
+        int pullCastCount;
+        RaycastHit[] pullCastHits = new RaycastHit[16];
+        void UpdatePullPosition() {
+            pullCastCount = Physics.SphereCastNonAlloc(baseTracker.position, pullCastRadius, pullForward, pullCastHits, pullCastDistance, pullCastLayers, QueryTriggerInteraction.Ignore);
+
+            pullObject.isPrepared = pullCastCount > 0;
+
+            float distance = pullCastDistance;
+            for (int i = 0; i < pullCastCount; i++) {
+                if (distance > pullCastHits[i].distance) {
+                    distance = pullCastHits[i].distance;
+                    pullObject.position = pullCastHits[i].point;
+                    pullObject.normalizedDistance = distance / pullCastDistance;
+                }
+            }
+        }
+
         public void OnPull(InputValue value) {
-            pullObject.SetActive(value.isPressed);
+            pullObject.isPulling = value.isPressed;
         }
     }
 }
