@@ -1,3 +1,4 @@
+using MyBox;
 using UnityEngine;
 using UnityEngine.AI;
 using ZSBB.BehaviorTree;
@@ -15,17 +16,25 @@ namespace ZSBB.AnimalBT {
         public static float speed = 5f;
         public static float weight = 10f;
 
+        [Header("Runtime")]
+        [SerializeField, ReadOnly]
         public NavMeshAgent attachedAgent;
+        [SerializeField, ReadOnly]
         public Rigidbody attachedRigidbody;
+        [SerializeField, ReadOnly]
         public CapsuleCollider attachedCollider;
+        [SerializeField, ReadOnly]
         public Animator attachedAnimator;
+        [SerializeField, ReadOnly]
         public SpeedTracker attachedTracker;
 
-        public bool wasHit;
-
-        public bool isCaged;
-
+        [Space]
+        [SerializeField, ReadOnly]
         public AnimalCagePreference cagePreference = AnimalCagePreference.NO_PREFERENCE;
+        [SerializeField, ReadOnly]
+        public bool wasHit;
+        [SerializeField, ReadOnly]
+        public bool isCaged;
 
         bool hasWarped;
 
@@ -128,7 +137,15 @@ namespace ZSBB.AnimalBT {
             attachedRigidbody.freezeRotation = false;
             wasHit = true;
         }
-
-        public void OnCaged(bool value) => isCaged = value;
+        public void OnCageEnter(AnimalCagePreference cage) {
+            if (cage == cagePreference) {
+                isCaged = true;
+            }
+        }
+        public void OnCageExit(AnimalCagePreference cage) {
+            if (cage == cagePreference) {
+                isCaged = false;
+            }
+        }
     }
 }

@@ -1,7 +1,10 @@
+using ZSBB.AnimalBT;
+
 namespace ZSBB {
     interface IRelocationMessages {
         void OnHit();
 
-        void OnCaged(bool isCaged);
+        void OnCageEnter(AnimalCagePreference cage);
+        void OnCageExit(AnimalCagePreference cage);
     }
 }
