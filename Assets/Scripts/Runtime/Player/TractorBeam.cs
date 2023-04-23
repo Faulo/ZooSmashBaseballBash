@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace ZSBB {
     sealed class TractorBeam : MonoBehaviour {
+        Relocator relocator => Relocator.instance;
+
         [SerializeField]
         SphereCollider attachedCollider;
         Vector3 worldCenter => transform.position + attachedCollider.center;
@@ -40,7 +42,7 @@ namespace ZSBB {
                     (worldCenter - rigidbody.position).normalized,
                     tractorMultiplier
                 );
-                if (Relocator.instance.topTracker is SpeedTracker tracker && tracker.isMoving) {
+                if (relocator.topTracker is SpeedTracker tracker && tracker.isMoving) {
                     force += CalculateForce(tracker.direction, relocatorMultiplier);
                     var homingDirection = tracker.position - rigidbody.position;
                     homingDirection.y = homingDirection.SwizzleXZ().magnitude;
