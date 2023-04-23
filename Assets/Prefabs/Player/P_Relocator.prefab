@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 4449704187595846018}
   - component: {fileID: 7754892972574987395}
   - component: {fileID: -1302100742187604535}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: P_Relocator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
