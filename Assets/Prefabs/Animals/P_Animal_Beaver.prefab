@@ -49,8 +49,10 @@ MonoBehaviour:
     m_Center: {x: 9.1309515e-18, y: 0.27932617, z: -0.03348038}
     m_Extent: {x: 0.22917035, y: 0.2804021, z: 0.6162455}
   animator: {fileID: 9100000, guid: 51222106d8f6cc94fa52f3ee3ad30608, type: 2}
+  linePrefab: {fileID: 536292112475244118, guid: 65e5526326fcf004ab00f5e6ea6126bd,
+    type: 3}
   weight: 100
-  baseDrag: 1
+  baseDrag: 0.5
   material: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
   layer: 7
   manager: {fileID: 11400000, guid: 38ff797111fe9cf459f678cd2c99bc94, type: 2}

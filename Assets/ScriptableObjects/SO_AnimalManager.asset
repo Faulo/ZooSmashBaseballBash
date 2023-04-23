@@ -15,6 +15,9 @@ MonoBehaviour:
   prefabPath: Assets/Prefabs/Animals
   defaultMaterial: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
   defaultLayer: 7
+  defaultDrag: 0.5
+  defaultLinePrefab: {fileID: 536292112475244118, guid: 65e5526326fcf004ab00f5e6ea6126bd,
+    type: 3}
   models:
     items:
     - key: ArcticFox
