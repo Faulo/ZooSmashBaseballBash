@@ -28,9 +28,13 @@ namespace ZSBB {
 
         [Header("Gameplay")]
         [SerializeField]
+        public AnimalManager manager;
+        [SerializeField]
         int agentTypeID = 0;
         [SerializeField]
         public float baseSpeed = 5;
+
+        AnimalBehavior behavior;
 
 #if UNITY_EDITOR
         [ContextMenu(nameof(FindStuff))]
@@ -74,6 +78,17 @@ namespace ZSBB {
             }
         }
 
+        void OnEnable() {
+            if (Application.isPlaying) {
+                manager.RegisterAnimal(behavior);
+            }
+        }
+        void OnDisable() {
+            if (Application.isPlaying) {
+                manager.UnregisterAnimal(behavior);
+            }
+        }
+
         void SpawnAnimal() {
             transform.Clear();
 
@@ -108,7 +123,7 @@ namespace ZSBB {
 
                 var tracker = instance.AddComponent<SpeedTracker>();
 
-                var behavior = instance.AddComponent<AnimalBehavior>();
+                behavior = instance.AddComponent<AnimalBehavior>();
                 behavior.attachedAnimator = animator;
                 behavior.attachedRigidbody = rigidbody;
                 behavior.attachedCollider = collider;

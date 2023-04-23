@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3772bbe492b99094da55141cd421d749, type: 3}
   m_Name: SO_GameState
   m_EditorClassIdentifier: 
+  animals: {fileID: 11400000, guid: 38ff797111fe9cf459f678cd2c99bc94, type: 2}
