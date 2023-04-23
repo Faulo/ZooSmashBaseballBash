@@ -4,27 +4,6 @@ using ZSBB.BehaviorTree;
 using ZSBB.Level;
 
 namespace ZSBB.AnimalBT {
-    enum AnimationStates {
-        Attack,
-        Bounce,
-        Clicked,
-        Eat,
-        Idle_A,
-        Idle_B,
-        Idle_C,
-        Sit,
-        Swim,
-        Roll,
-        Walk,
-        Fly,
-        Death,
-        Fear,
-        Hit,
-        Jump,
-        Run,
-        Spin
-    }
-
     sealed class AnimalBehavior : BTree, IRelocationMessages {
         public static float speed = 5f;
         public static float weight = 10f;

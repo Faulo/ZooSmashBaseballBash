@@ -24,7 +24,7 @@ namespace ZSBB.AnimalBT {
                 if (Tower.instance) {
                     LookAt(Tower.instance.transform);
 
-                    _animator.PlayInFixedTime(AnimationStates.Walk);
+                    _animator.PlayInFixedTime(AnimalAnimation.Walk);
 
                     var desiredVelocity = _navMeshAgent.desiredVelocity;
                     desiredVelocity *= AnimalBehavior.speed;

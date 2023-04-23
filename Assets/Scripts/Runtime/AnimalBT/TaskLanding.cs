@@ -10,7 +10,7 @@ namespace ZSBB.AnimalBT {
         }
 
         public override NodeState Evaluate() {
-            _animator.PlayInFixedTime(AnimationStates.Roll);
+            _animator.PlayInFixedTime(AnimalAnimation.Roll);
 
             state = NodeState.RUNNING;
             return state;

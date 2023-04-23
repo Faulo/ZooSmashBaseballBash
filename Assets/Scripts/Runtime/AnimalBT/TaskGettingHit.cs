@@ -15,7 +15,7 @@ namespace ZSBB.AnimalBT {
 
         public override NodeState Evaluate() {
             if (_tracker.isMoving) {
-                _animator.PlayInFixedTime(AnimationStates.Death);
+                _animator.PlayInFixedTime(AnimalAnimation.Death);
             } else {
                 _behavior.wasHit = false;
             }

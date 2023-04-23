@@ -17,9 +17,9 @@ namespace ZSBB.AnimalBT {
             }
 
             if (Tower.instance.TakeDamage(Time.deltaTime)) {
-                _animator.PlayInFixedTime(AnimationStates.Attack);
+                _animator.PlayInFixedTime(AnimalAnimation.Attack);
             } else {
-                _animator.PlayInFixedTime(AnimationStates.Spin);
+                _animator.PlayInFixedTime(AnimalAnimation.Spin);
             }
 
             state = NodeState.RUNNING;
