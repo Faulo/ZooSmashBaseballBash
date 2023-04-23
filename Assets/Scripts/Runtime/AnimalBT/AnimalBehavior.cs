@@ -4,6 +4,12 @@ using ZSBB.BehaviorTree;
 using ZSBB.Level;
 
 namespace ZSBB.AnimalBT {
+    public enum AnimalCagePreference {
+        PRISON,
+        WHIMSICAL,
+        PLAYGRUND,
+        NOPREFERENCE
+    }
     sealed class AnimalBehavior : BTree, IRelocationMessages {
         public static float speed = 5f;
         public static float weight = 10f;
@@ -18,11 +24,18 @@ namespace ZSBB.AnimalBT {
 
         public bool isCaged;
 
+        public AnimalCagePreference cagePreference = AnimalCagePreference.NOPREFERENCE;
+
         protected override void Start() {
             base.Start();
             attachedAgent.Warp(attachedRigidbody.position);
             if (Tower.instance) {
                 attachedAgent.destination = Tower.instance.transform.position;
+            }
+
+            //If no preference, set random.
+            if (cagePreference == AnimalCagePreference.NOPREFERENCE) {
+                cagePreference = (AnimalCagePreference)Random.Range(0, 2);
             }
         }
 

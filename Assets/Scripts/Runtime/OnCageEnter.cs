@@ -1,8 +1,10 @@
 using UnityEngine;
+using ZSBB.AnimalBT;
 
 namespace ZSBB {
     sealed class OnCageEnter : MonoBehaviour {
         //private AudioSource _audioSource;
+        [SerializeField] private AnimalCagePreference thisCage;
 
         void Start() {
             //_audioSource = GetComponent<AudioSource>();
@@ -10,11 +12,13 @@ namespace ZSBB {
 
         void OnTriggerEnter(Collider collision) {
             if (collision.GetComponent<Rigidbody>() is Rigidbody rigidbody) {
-                rigidbody.SendMessage(
-                    nameof(IRelocationMessages.OnCaged),
-                    true,
-                    SendMessageOptions.DontRequireReceiver
-                );
+                if (collision.GetComponent<AnimalBehavior>().cagePreference == thisCage) {
+                    rigidbody.SendMessage(
+                        nameof(IRelocationMessages.OnCaged),
+                        true,
+                        SendMessageOptions.DontRequireReceiver
+                    );
+                }
             }
             // play funny sound effect.
             //_audioSource.Play();
