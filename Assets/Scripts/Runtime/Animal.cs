@@ -15,6 +15,8 @@ namespace ZSBB {
         public Bounds bounds = new();
         [SerializeField]
         public RuntimeAnimatorController animator;
+        [SerializeField]
+        public GameObject linePrefab;
 
         [Header("Physics")]
         [SerializeField]
@@ -34,7 +36,7 @@ namespace ZSBB {
         [SerializeField]
         public float baseSpeed = 5;
 
-        [SerializeField] private AnimalCagePreference _cagePreference;
+        [SerializeField] AnimalCagePreference _cagePreference;
 
         AnimalBehavior behavior;
 
@@ -124,6 +126,10 @@ namespace ZSBB {
                 agent.height = bounds.size.y;
 
                 var tracker = instance.AddComponent<SpeedTracker>();
+
+                if (linePrefab) {
+                    Instantiate(linePrefab, instance.transform);
+                }
 
                 behavior = instance.AddComponent<AnimalBehavior>();
                 behavior.attachedAnimator = animator;

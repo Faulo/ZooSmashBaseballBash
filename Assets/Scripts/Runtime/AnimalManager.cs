@@ -27,6 +27,10 @@ namespace ZSBB {
         PhysicMaterial defaultMaterial;
         [SerializeField, Layer]
         int defaultLayer;
+        [SerializeField]
+        float defaultDrag = 0.5f;
+        [SerializeField]
+        GameObject defaultLinePrefab;
 
         [Header("Storage")]
         [SerializeField]
@@ -64,7 +68,11 @@ namespace ZSBB {
         }
         void UpdateBehavior(Animal animal) {
             animal.layer = defaultLayer;
+            animal.baseDrag = defaultDrag;
             animal.manager = this;
+            if (!animal.linePrefab) {
+                animal.linePrefab = defaultLinePrefab;
+            }
             if (!animal.material) {
                 animal.material = defaultMaterial;
             }
