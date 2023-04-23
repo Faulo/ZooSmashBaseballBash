@@ -10,6 +10,10 @@ namespace ZSBB {
         [SerializeField]
         AnimalManager animals;
 
+        public bool hasWon => false;
+
+        public bool hasLost => false;
+
         [SerializeField, ReadOnly]
         float timeLimit = -1;
         [SerializeField, ReadOnly]
