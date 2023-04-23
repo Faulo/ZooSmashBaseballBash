@@ -3,11 +3,11 @@ using ZSBB.AnimalBT;
 
 namespace ZSBB {
     sealed class OnCageEnter : MonoBehaviour {
-        //private AudioSource _audioSource;
+        private AudioSource _audioSource;
         [SerializeField] private AnimalCagePreference thisCage;
 
         void Start() {
-            //_audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         void OnTriggerEnter(Collider collision) {
@@ -33,7 +33,7 @@ namespace ZSBB {
                 );
             }
             // play funny sound effect.
-            //_audioSource.Play();
+            _audioSource.Play();
         }
     }
 }
