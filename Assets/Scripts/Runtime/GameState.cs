@@ -10,9 +10,9 @@ namespace ZSBB {
         [SerializeField]
         AnimalManager animals;
 
-        public bool hasWon => false;
+        public bool hasWon => animals.outCount == 0;
 
-        public bool hasLost => false;
+        public bool hasLost => currentStability == 0;
 
         [SerializeField, ReadOnly]
         float timeLimit = -1;
@@ -76,10 +76,20 @@ namespace ZSBB {
                 return (float)currentStability / maxStability;
             }
         }
-
         string stabilityText {
             get {
                 return string.Empty.PadLeft(currentStability, 'x').Replace("x", "🧱");
+            }
+        }
+
+        float animalsHealth {
+            get {
+                return (float)animals.inCount / animals.totalCount;
+            }
+        }
+        string animalsText {
+            get {
+                return $"{animals.inCount}/{animals.totalCount}";
             }
         }
 
@@ -89,14 +99,12 @@ namespace ZSBB {
                 yield return ("$productName", Application.productName);
                 yield return ("$companyName", Application.companyName);
 
-                yield return ("$in", animals.inCount.ToString());
-                yield return ("$out", animals.outCount.ToString());
-                yield return ("$total", animals.totalCount.ToString());
-
+                yield return ("$animals", AddColor(animalsText, animalsHealth));
                 yield return ("$stability", AddColor(stabilityText, stabilityHealth));
                 yield return ("$timer", AddColor(timerText, timerHealth));
             }
         }
+
         static string AddColor(string text, float health) {
             var color = Color.Lerp(Color.red, Color.green, health);
             string html = ColorUtility.ToHtmlStringRGB(color);

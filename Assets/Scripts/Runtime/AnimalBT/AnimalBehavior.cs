@@ -27,18 +27,23 @@ namespace ZSBB.AnimalBT {
 
         public AnimalCagePreference cagePreference = AnimalCagePreference.NO_PREFERENCE;
 
-        protected override void Start() {
-            base.Start();
-            attachedAgent.Warp(attachedRigidbody.position);
-            if (Tower.instance) {
-                attachedAgent.destination = Tower.instance.transform.position;
-            }
-        }
+        bool hasWarped;
 
         protected override void FixedUpdate() {
             base.FixedUpdate();
-            if (attachedAgent.hasPath) {
-                attachedAgent.nextPosition = attachedRigidbody.position;
+            if (hasWarped) {
+                if (attachedAgent.hasPath) {
+                    attachedAgent.nextPosition = attachedRigidbody.position;
+                }
+            } else {
+                if (NavMesh.SamplePosition(attachedRigidbody.position, out var hit, float.PositiveInfinity, -1)) {
+                    if (attachedAgent.Warp(hit.position)) {
+                        hasWarped = true;
+                        if (Tower.instance) {
+                            attachedAgent.destination = Tower.instance.transform.position;
+                        }
+                    }
+                }
             }
         }
 
