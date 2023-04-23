@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: e3265ab4bf004d28a9537516768c1c75
+guid: 1be455906730fbc408e36d6c1fea6d1e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
   fontSize: 16
-  forceTextureCase: -1
+  forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Liberation Sans
-  fallbackFontReferences: []
+  - Noto Emoji
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 414de31f4cb072d41bd78fb92f4836e7, type: 3}
+  - {fileID: 12800000, guid: 1a5736bb683f96d46b7f14d4a5a101cf, type: 3}
+  - {fileID: 12800000, guid: 147e6a8a1e916d24e8e71ad6ed1da3a4, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
