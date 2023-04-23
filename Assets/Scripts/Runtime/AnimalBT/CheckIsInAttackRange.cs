@@ -1,32 +1,29 @@
 ﻿using UnityEngine;
 using ZSBB.BehaviorTree;
+using ZSBB.Level;
 
 namespace ZSBB.AnimalBT {
     sealed class CheckIsInAttackRange : Node {
-        readonly Rigidbody _rigidbody;
+        readonly Transform _transform;
 
-        public CheckIsInAttackRange(Rigidbody rigidbody) {
-            _rigidbody = rigidbody;
+        readonly float minDistance = 3;
+
+        public CheckIsInAttackRange(Transform transform) {
+            _transform = transform;
         }
 
         public override NodeState Evaluate() {
-            if (IsLanding()) {
-                //_agent.enabled = true;
+            if (Tower.instance && IsInRange(Tower.instance.transform)) {
                 state = NodeState.SUCCESS;
                 return state;
             }
 
-            //_agent.enabled = false;
             state = NodeState.FAILURE;
             return state;
         }
 
-        bool IsLanding() {
-            if ((!(_rigidbody.velocity.y < 0.7f)) && (!(_rigidbody.velocity.y > -0.7f))) {
-                return true;
-            }
-
-            return false;
+        bool IsInRange(Transform target) {
+            return Vector3.Distance(_transform.position, target.position) < minDistance;
         }
     }
 }

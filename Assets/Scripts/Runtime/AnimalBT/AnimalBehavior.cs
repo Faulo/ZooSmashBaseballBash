@@ -87,8 +87,21 @@ namespace ZSBB.AnimalBT {
                                 new Selector(
                                     new Sequence(
                                         new CheckForPlayer(),
-                                        new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody,
-                                            attachedAnimator)
+                                        new Selector(
+                                            new Sequence(
+                                                // attack! attack! attack!
+                                                new CheckIsInAttackRange(transform),
+                                                new TaskAttackPlayer(attachedAnimator)
+                                            ),
+                                            // gotta walk the walk
+                                            new Sequence(
+                                                new TaskGoToPlayer(
+                                                    attachedAgent,
+                                                    attachedRigidbody,
+                                                    attachedAnimator
+                                                )
+                                            )
+                                        )
                                     ),
                                     // idle here!
                                     new Sequence()
