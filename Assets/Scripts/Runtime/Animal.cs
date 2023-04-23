@@ -34,6 +34,8 @@ namespace ZSBB {
         [SerializeField]
         public float baseSpeed = 5;
 
+        [SerializeField] private AnimalCagePreference _cagePreference;
+
         AnimalBehavior behavior;
 
 #if UNITY_EDITOR
@@ -129,6 +131,7 @@ namespace ZSBB {
                 behavior.attachedCollider = collider;
                 behavior.attachedAgent = agent;
                 behavior.attachedTracker = tracker;
+                behavior.cagePreference = _cagePreference;
             }
         }
         static (int direction, float radius, float height) GetCapsule(in Bounds bounds) {

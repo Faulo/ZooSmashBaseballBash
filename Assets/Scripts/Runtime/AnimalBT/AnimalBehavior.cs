@@ -8,7 +8,8 @@ namespace ZSBB.AnimalBT {
         PRISON,
         WHIMSICAL,
         PLAYGRUND,
-        NOPREFERENCE
+        SLOTH_ONLY,
+        NO_PREFERENCE
     }
     sealed class AnimalBehavior : BTree, IRelocationMessages {
         public static float speed = 5f;
@@ -24,18 +25,13 @@ namespace ZSBB.AnimalBT {
 
         public bool isCaged;
 
-        public AnimalCagePreference cagePreference = AnimalCagePreference.NOPREFERENCE;
+        public AnimalCagePreference cagePreference = AnimalCagePreference.NO_PREFERENCE;
 
         protected override void Start() {
             base.Start();
             attachedAgent.Warp(attachedRigidbody.position);
             if (Tower.instance) {
                 attachedAgent.destination = Tower.instance.transform.position;
-            }
-
-            //If no preference, set random.
-            if (cagePreference == AnimalCagePreference.NOPREFERENCE) {
-                cagePreference = (AnimalCagePreference)Random.Range(0, 2);
             }
         }
 
