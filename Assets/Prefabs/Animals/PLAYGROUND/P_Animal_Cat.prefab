@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1412995115322671882
+--- !u!1 &530785998278922866
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2295108785937421272}
-  - component: {fileID: 2618544930796410362}
+  - component: {fileID: 8103596730555369192}
+  - component: {fileID: 8649878157985902034}
   m_Layer: 0
-  m_Name: P_Animal_Peacock
+  m_Name: P_Animal_Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2295108785937421272
+--- !u!4 &8103596730555369192
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412995115322671882}
+  m_GameObject: {fileID: 530785998278922866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 105
+  m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2618544930796410362
+--- !u!114 &8649878157985902034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412995115322671882}
+  m_GameObject: {fileID: 530785998278922866}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20069a243abb3d94b8df1ed114668c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 100010, guid: 6659b74128ca22f4f86d574cbc75ac5e, type: 3}
+  model: {fileID: 100002, guid: 1b0b46dc3301bde48b59f013024cbec8, type: 3}
   bounds:
-    m_Center: {x: -0.0000000372529, y: 0.48318136, z: -0.13591862}
-    m_Extent: {x: 0.4477149, y: 0.4819538, z: 0.467922}
-  animator: {fileID: 9100000, guid: 4b798f49b1ac84946a6c7b2b2f6d251f, type: 2}
+    m_Center: {x: 4.223589e-17, y: 0.39166296, z: -0.1830424}
+    m_Extent: {x: 0.2335454, y: 0.49832174, z: 0.5877137}
+  animator: {fileID: 9100000, guid: cc96420140b3c6e4cae96633af1db9d2, type: 2}
   weight: 100
   baseDrag: 1
   material: {fileID: 13400000, guid: 107929f448af46d498de76b9cf0bed4d, type: 2}
@@ -56,3 +56,4 @@ MonoBehaviour:
   manager: {fileID: 11400000, guid: 38ff797111fe9cf459f678cd2c99bc94, type: 2}
   agentTypeID: 0
   baseSpeed: 5
+  _cagePreference: 2
