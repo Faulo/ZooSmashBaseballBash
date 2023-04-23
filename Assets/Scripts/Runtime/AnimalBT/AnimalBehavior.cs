@@ -53,29 +53,25 @@ namespace ZSBB.AnimalBT {
         }
 
         protected override Node SetupTree() {
+            var fixRotation = new TaskFixRotation(attachedRigidbody);
+
             Node root = new Selector(
-                // Gets hit
+                // if we were hit, we gotta feel the pain
                 new Sequence(
                     new CheckIsHit(this),
                     new TaskGettingHit(attachedAnimator, this, attachedTracker)
                 ),
                 new Selector(
                     new Sequence(
+                        // if we're grounded, we wanna stop this physics nonsense and start rotating us ourselves
                         new CheckIsGrounded(transform, attachedCollider),
+                        new TaskDisableRotation(attachedRigidbody),
+                        fixRotation,
                         new Selector(
-                            // first, if we can rotate, we must become upright and disable rotation
+                            // first, if we can rotate, we must become upright
                             new Sequence(
-                                new CheckCanRotate(attachedRigidbody),
-                                new TaskFixRotation(attachedRigidbody),
-                                new Selector(
-                                    new Sequence(
-                                        new CheckIsLyingDown(transform),
-                                        new TaskStandUp(attachedAnimator)
-                                    ),
-                                    new Sequence(
-                                        new TaskDisableRotation(attachedRigidbody)
-                                    )
-                                )
+                                new CheckIsLyingDown(transform),
+                                new TaskStandUp(attachedAnimator)
                             ),
                             // now we're good to go
                             new Sequence(
@@ -92,8 +88,19 @@ namespace ZSBB.AnimalBT {
                     ),
                     // if we got airborne somehow, we should start rigidbodying
                     new Sequence(
-                        new TaskEnableRotation(attachedRigidbody),
-                        new TaskFlying(attachedAnimator)
+                        new Selector(
+                            // if we're airborne and moving, we should keep flying
+                            new Sequence(
+                                new CheckIsMoving(attachedTracker),
+                                new TaskEnableRotation(attachedRigidbody),
+                                new TaskFlying(attachedAnimator)
+                            ),
+                            // otherwise, let's try to get grounded
+                            new Sequence(
+                                new TaskDisableRotation(attachedRigidbody),
+                                fixRotation
+                            )
+                        )
                     )
                 )
             );

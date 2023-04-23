@@ -7,7 +7,7 @@ namespace ZSBB.AnimalBT {
         readonly CapsuleCollider _collider;
 
         readonly float maxDistance = 8f;
-        readonly float distanceToGround = 0.125f;
+        readonly float distanceToGround = 0.25f;
         readonly LayerMask groundLayers = LayerMask.GetMask("Environment");
 
         public CheckIsGrounded(Transform transform, CapsuleCollider collider) {
@@ -28,6 +28,10 @@ namespace ZSBB.AnimalBT {
         bool IsGrounded() {
             if (!Physics.Raycast(_transform.position + _collider.center, Vector3.down, out var hit, maxDistance, groundLayers)) {
                 return false;
+            }
+
+            if (hit.point == Vector3.zero) {
+                Debug.Log($"HELP {hit.distance} {_transform}", _transform);
             }
 
             float distance = Vector3.Distance(

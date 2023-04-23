@@ -1720,7 +1720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &366316368
 Transform:
   m_ObjectHideFlags: 0
@@ -3551,6 +3551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_Animal_Elephant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372482214549772798, guid: 23f70846f3e693641bc8082c7026b672,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
