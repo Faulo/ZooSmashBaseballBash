@@ -26,6 +26,8 @@ namespace ZSBB.Level {
 
         ParticleSystem damageParticles;
         readonly Queue<GameObject> segments = new();
+        public int maxSegmentCount => segmentCount;
+        public int currentSegmentCount => segments.Count;
 
         float currentHitPoints;
 
