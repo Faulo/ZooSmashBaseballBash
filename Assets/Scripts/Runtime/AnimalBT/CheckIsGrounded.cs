@@ -26,7 +26,7 @@ namespace ZSBB.AnimalBT {
         }
 
         bool IsGrounded() {
-            if (!Physics.Raycast(_transform.position + _collider.center, Vector3.down, out var hit, maxDistance, groundLayers)) {
+            if (!Physics.Raycast(_transform.position + _collider.center, Vector3.down, out var hit, maxDistance, groundLayers, QueryTriggerInteraction.Ignore)) {
                 return false;
             }
 

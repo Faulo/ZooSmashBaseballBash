@@ -115,6 +115,6 @@ namespace ZSBB.AnimalBT {
             wasHit = true;
         }
 
-        public void OnCaged() => isCaged = true;
+        public void OnCaged(bool value) => isCaged = value;
     }
 }
