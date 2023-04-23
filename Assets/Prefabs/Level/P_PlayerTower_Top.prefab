@@ -152,7 +152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<u>$productName v$version</u>\n\n\tAnimals saved: $in/$total\n\n\tStability:
+  m_text: "<u>$productName v$version</u>\n\n\tAnimals saved: $animals\n\n\tStability:
     $stability\n\n\tTime left: $timer\n\n\n\n\n\n\xA9 $companyName"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
