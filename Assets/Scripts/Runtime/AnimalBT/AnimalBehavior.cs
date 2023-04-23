@@ -36,6 +36,8 @@ namespace ZSBB.AnimalBT {
 
         public bool wasHit;
 
+        public bool isCaged;
+
         Transform player;
 
         protected override void Start() {
@@ -61,6 +63,13 @@ namespace ZSBB.AnimalBT {
                     new CheckIsHit(this),
                     new TaskGettingHit(attachedAnimator, this, attachedTracker)
                 ),
+                // if caged start dacing upright
+                new Sequence(
+                    new CheckIsCaged(this),
+                    new CheckIsGrounded(transform, attachedCollider),
+                    new TaskDisableRotation(attachedRigidbody),
+                    fixRotation,
+                    new TaskEnjoyCageLife(attachedAnimator)),
                 new Selector(
                     new Sequence(
                         // if we're grounded, we wanna stop this physics nonsense and start rotating us ourselves
@@ -78,7 +87,8 @@ namespace ZSBB.AnimalBT {
                                 new Selector(
                                     new Sequence(
                                         new CheckForPlayer(),
-                                        new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody, attachedAnimator)
+                                        new TaskGoToPlayer(transform, attachedAgent, attachedRigidbody,
+                                            attachedAnimator)
                                     ),
                                     // idle here!
                                     new Sequence()
@@ -112,5 +122,7 @@ namespace ZSBB.AnimalBT {
             attachedRigidbody.freezeRotation = false;
             wasHit = true;
         }
+
+        public void OnCaged() => isCaged = true;
     }
 }
