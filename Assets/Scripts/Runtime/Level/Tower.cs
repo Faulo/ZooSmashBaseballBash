@@ -4,6 +4,8 @@ using UnityEngine;
 namespace ZSBB.Level {
     [ExecuteAlways]
     sealed class Tower : MonoBehaviour {
+        public static Tower instance { get; private set; }
+
         [SerializeField]
         GameObject segmentPrefab;
         [SerializeField, Range(0, 100)]
@@ -25,6 +27,12 @@ namespace ZSBB.Level {
             }
         }
 #endif
+        void OnEnable() {
+            instance = this;
+        }
+        void OnDisable() {
+            instance = null;
+        }
         void Awake() {
             if (Application.isPlaying) {
                 SpawnTower();

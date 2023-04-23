@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using ZSBB.BehaviorTree;
+using ZSBB.Level;
 
 namespace ZSBB.AnimalBT {
     enum AnimationStates {
@@ -38,13 +39,12 @@ namespace ZSBB.AnimalBT {
 
         public bool isCaged;
 
-        Transform player;
-
         protected override void Start() {
             base.Start();
             attachedAgent.Warp(attachedRigidbody.position);
-            player = GameObject.Find("P_Player").transform;
-            attachedAgent.destination = player.position;
+            if (Tower.instance) {
+                attachedAgent.destination = Tower.instance.transform.position;
+            }
         }
 
         protected override void FixedUpdate() {

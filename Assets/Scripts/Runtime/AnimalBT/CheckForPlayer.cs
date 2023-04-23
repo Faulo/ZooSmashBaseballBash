@@ -1,23 +1,15 @@
 using UnityEngine;
 using ZSBB.BehaviorTree;
+using ZSBB.Level;
 
 namespace ZSBB.AnimalBT {
     sealed class CheckForPlayer : Node {
-
         public override NodeState Evaluate() {
-            object t = GetData("player");
-            if (t == null) {
-                var player = GameObject.Find("P_Player");
-                if (player) {
-                    parent.parent.SetData("player", player.transform);
-                    state = NodeState.SUCCESS;
-                    return state;
-                }
-
-                state = NodeState.FAILURE;
+            if (Tower.instance) {
+                state = NodeState.SUCCESS;
                 return state;
             }
-            state = NodeState.SUCCESS;
+            state = NodeState.FAILURE;
             return state;
         }
     }

@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using ZSBB.BehaviorTree;
+using ZSBB.Level;
 
 namespace ZSBB.AnimalBT {
     sealed class CheckIsNotFacingPlayer : Node {
         readonly Transform _transform;
+
+        readonly float maxAngle = 10;
 
         public CheckIsNotFacingPlayer(Transform transform) {
             _transform = transform;
         }
 
         public override NodeState Evaluate() {
-            if (!IsAligned()) {
+            if (Tower.instance && !IsAligned(Tower.instance.transform)) {
                 state = NodeState.SUCCESS;
                 return state;
             }
@@ -19,14 +22,11 @@ namespace ZSBB.AnimalBT {
             return state;
         }
 
-        bool IsAligned() {
-            var player = (Transform)GetData("player");
-            float angle = 10f;
-            if (Vector3.Angle(player.transform.forward, _transform.position - player.transform.position) < angle) {
-                return true;
-            }
-
-            return false;
+        bool IsAligned(Transform target) {
+            var rotation = Quaternion
+               .LookRotation(target.position - _transform.position)
+               .eulerAngles;
+            return Mathf.DeltaAngle(_transform.eulerAngles.y, rotation.y) < maxAngle;
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using ZSBB.BehaviorTree;
+using ZSBB.Level;
 
 namespace ZSBB.AnimalBT {
     sealed class TaskGoToPlayer : Node {
@@ -24,7 +25,8 @@ namespace ZSBB.AnimalBT {
 
         public override NodeState Evaluate() {
             if (_navMeshAgent.hasPath) {
-                if (GetData("player") is Transform player) {
+                if (Tower.instance) {
+                    var player = Tower.instance.transform;
                     var desiredVelocity = Vector3.zero;
                     if (_navMeshAgent.remainingDistance > minDistanceToPlayerBeforeGameOver) {
                         desiredVelocity = _navMeshAgent.desiredVelocity;
