@@ -8,7 +8,7 @@ namespace ZSBB.AnimalBT {
 
         readonly float maxDistance = 8f;
         readonly float distanceToGround = 0.25f;
-        readonly LayerMask groundLayers = LayerMask.GetMask("Environment");
+        readonly LayerMask groundLayers = LayerMask.GetMask("Environment", "Ground");
 
         public CheckIsGrounded(Transform transform, CapsuleCollider collider) {
             _transform = transform;
