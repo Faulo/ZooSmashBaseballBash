@@ -25,6 +25,7 @@ namespace ZSBB {
             foreach (var (name, value) in state.variables) {
                 content = content.Replace(name, value);
             }
+
             text.text = content;
         }
     }

@@ -18,6 +18,7 @@ namespace ZSBB.Player {
             if (!tracker) {
                 transform.TryGetComponentInParent(out tracker);
             }
+
             if (!particles) {
                 transform.TryGetComponentInParent(out particles);
             }

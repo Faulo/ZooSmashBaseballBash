@@ -55,6 +55,7 @@ namespace ZSBB {
                     UnityEditor.EditorUtility.SetDirty(prefab);
                     continue;
                 }
+
                 prefab = new GameObject($"P_Animal_{name}");
                 var animal = prefab.AddComponent<Animal>();
                 animal.model = model;
@@ -73,6 +74,7 @@ namespace ZSBB {
             if (!animal.linePrefab) {
                 animal.linePrefab = defaultLinePrefab;
             }
+
             if (!animal.material) {
                 animal.material = defaultMaterial;
             }

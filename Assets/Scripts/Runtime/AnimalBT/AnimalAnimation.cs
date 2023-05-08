@@ -28,18 +28,23 @@ namespace ZSBB.AnimalBT {
             if (!stateIds.TryGetValue(state, out int id)) {
                 stateIds[state] = id = Animator.StringToHash("Base Layer." + state);
             }
+
             if (!animator.HasState(0, stateIds[state])) {
                 return;
             }
+
             if (animator.GetCurrentAnimatorStateInfo(0).fullPathHash == id) {
                 return;
             }
+
             if (animator.GetNextAnimatorStateInfo(0).fullPathHash == id) {
                 return;
             }
+
             if (timeInSeconds < 0) {
                 timeInSeconds = state.GetTransitionDuration();
             }
+
             animator.CrossFadeInFixedTime(id, timeInSeconds, 0);
             animator.speed = state.GetPlaybackSpeed();
 

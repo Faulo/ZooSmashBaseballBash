@@ -36,6 +36,7 @@ namespace ZSBB {
             if (selecting.emission is ParticleSystem.EmissionModule sEmission) {
                 sEmission.enabled = isPrepared && !isPulling;
             }
+
             if (pulling.emission is ParticleSystem.EmissionModule pEmission) {
                 pEmission.enabled = isPrepared && isPulling;
             }

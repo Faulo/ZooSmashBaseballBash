@@ -48,6 +48,7 @@ namespace ZSBB {
                     homingDirection.y = homingDirection.SwizzleXZ().magnitude;
                     force += CalculateForce(homingDirection.normalized, homingMultiplier * tracker.speed);
                 }
+
                 rigidbody.AddForce(force, forceMode);
             }
         }
@@ -68,6 +69,7 @@ namespace ZSBB {
             foreach (var rigidbody in rigidbodies) {
                 rigidbody.useGravity = true;
             }
+
             rigidbodies.Clear();
         }
 

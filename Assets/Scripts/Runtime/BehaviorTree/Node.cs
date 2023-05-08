@@ -13,7 +13,7 @@ namespace ZSBB.BehaviorTree {
         public Node parent;
         protected readonly Node[] children;
 
-        Dictionary<string, object> _dataContext = new Dictionary<string, object>();
+        Dictionary<string, object> _dataContext = new();
 
         public Node() {
             parent = null;
@@ -23,6 +23,7 @@ namespace ZSBB.BehaviorTree {
             foreach (var child in children) {
                 child.parent = this;
             }
+
             this.children = children;
         }
 
@@ -46,6 +47,7 @@ namespace ZSBB.BehaviorTree {
 
                 node = node.parent;
             }
+
             return null;
         }
 
@@ -64,6 +66,7 @@ namespace ZSBB.BehaviorTree {
 
                 node = node.parent;
             }
+
             return false;
         }
     }

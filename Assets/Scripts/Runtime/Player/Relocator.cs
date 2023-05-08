@@ -35,6 +35,7 @@ namespace ZSBB {
             if (!attachedRigidbody) {
                 TryGetComponent(out attachedRigidbody);
             }
+
             if (!attachedCollider) {
                 TryGetComponent(out attachedCollider);
             }
@@ -49,7 +50,6 @@ namespace ZSBB {
             instance = null;
             Destroy(pullInstance);
         }
-
 
         void FixedUpdate() {
             if (!pullInstance.isPulling) {

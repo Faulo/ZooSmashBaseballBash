@@ -25,7 +25,5 @@ namespace ZSBB.BehaviorTree {
             state = anyChildIsRunning ? NodeState.RUNNING : NodeState.SUCCESS;
             return state;
         }
-
     }
-
 }

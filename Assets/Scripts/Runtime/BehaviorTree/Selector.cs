@@ -22,7 +22,5 @@ namespace ZSBB.BehaviorTree {
             state = NodeState.FAILURE;
             return state;
         }
-
     }
-
 }

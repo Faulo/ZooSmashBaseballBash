@@ -37,6 +37,7 @@ namespace ZSBB {
                 if (timeLimit < 0) {
                     return 1;
                 }
+
                 return Mathf.Clamp01(timer / timeLimit);
             }
         }
@@ -45,6 +46,7 @@ namespace ZSBB {
                 if (timeLimit < 0) {
                     return "--:--";
                 }
+
                 if (timer < 0) {
                     return "00:00";
                 }
@@ -59,6 +61,7 @@ namespace ZSBB {
                 if (!Tower.instance) {
                     return 1;
                 }
+
                 return Tower.instance.currentSegmentCount;
             }
         }
@@ -67,6 +70,7 @@ namespace ZSBB {
                 if (!Tower.instance) {
                     return 1;
                 }
+
                 return Tower.instance.maxSegmentCount;
             }
         }
@@ -108,7 +112,7 @@ namespace ZSBB {
         static string AddColor(string text, float health) {
             var color = Color.Lerp(Color.red, Color.green, health);
             string html = ColorUtility.ToHtmlStringRGB(color);
-            return $"<color=#{html}>{text }</color>";
+            return $"<color=#{html}>{text}</color>";
         }
     }
 }

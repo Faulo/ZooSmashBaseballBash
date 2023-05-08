@@ -8,6 +8,7 @@ namespace ZSBB.AnimalBT {
                 state = NodeState.SUCCESS;
                 return state;
             }
+
             state = NodeState.FAILURE;
             return state;
         }

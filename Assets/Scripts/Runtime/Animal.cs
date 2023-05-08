@@ -145,9 +145,11 @@ namespace ZSBB {
             if (size.x > size.y && size.x > size.z) {
                 return (0, GetRadius(size.SwizzleYZ()), size.x);
             }
+
             if (bounds.size.y > bounds.size.z) {
                 return (1, GetRadius(size.SwizzleXZ()), size.y);
             }
+
             return (2, GetRadius(size.SwizzleXY()), size.z);
         }
         static float GetRadius(Vector2 size) {

@@ -18,10 +18,12 @@ namespace ZSBB.Level {
             if (isDone) {
                 return;
             }
+
             if (state.hasWon) {
                 isDone = true;
                 StartCoroutine(WinRoutine());
             }
+
             if (state.hasLost) {
                 isDone = true;
                 StartCoroutine(LoseRoutine());

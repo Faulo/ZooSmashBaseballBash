@@ -82,6 +82,7 @@ namespace ZSBB.Level {
             if (Application.isPlaying) {
                 SpawnTower();
             }
+
             currentHitPoints = hitPointsPerSegment;
         }
         void SpawnTower() {
@@ -96,12 +97,14 @@ namespace ZSBB.Level {
                     segments.Enqueue(instance);
                 }
             }
+
             if (topPrefab) {
                 float y = segmentCount * segmentHeight;
                 var instance = Instantiate(topPrefab, transform);
                 instance.hideFlags = HideFlags.DontSave;
                 instance.transform.localPosition = Vector3.up * y;
             }
+
             if (damageParticlesPrefab) {
                 damageParticles = Instantiate(damageParticlesPrefab, transform);
             }
