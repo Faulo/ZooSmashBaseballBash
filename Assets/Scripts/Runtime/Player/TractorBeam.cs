@@ -7,7 +7,7 @@ namespace ZSBB {
         Relocator relocator => Relocator.instance;
 
         [SerializeField]
-        SphereCollider attachedCollider;
+        CapsuleCollider attachedCollider;
         Vector3 worldCenter => transform.position + attachedCollider.center;
         [SerializeField]
         Vector2 tractorMultiplier = Vector2.one;

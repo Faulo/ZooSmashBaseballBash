@@ -752,7 +752,7 @@ ParticleSystem:
     sphericalDirectionAmount: 1
     randomPositionAmount: 1
     radius:
-      value: 5
+      value: 3
       mode: 0
       spread: 0
       speed:
@@ -5677,7 +5677,7 @@ ParticleSystem:
     sphericalDirectionAmount: 1
     randomPositionAmount: 1
     radius:
-      value: 5
+      value: 3
       mode: 0
       spread: 0
       speed:
@@ -9778,8 +9778,8 @@ GameObject:
   - component: {fileID: 5799175486561485900}
   - component: {fileID: 6123047684556274858}
   - component: {fileID: 5305566710378201748}
-  - component: {fileID: 6426551991344470221}
   - component: {fileID: -6658180396457120461}
+  - component: {fileID: 601903778709193943}
   m_Layer: 9
   m_Name: P_Pull
   m_TagString: Untagged
@@ -9850,8 +9850,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &6426551991344470221
-SphereCollider:
+--- !u!114 &-6658180396457120461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203666345233786578}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7444a1564a8f846b014adb05f3fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedCollider: {fileID: 601903778709193943}
+  tractorMultiplier: {x: 1, y: 2}
+  relocatorMultiplier: {x: 10, y: 5}
+  homingMultiplier: {x: 15, y: 15}
+  forceMode: 5
+--- !u!136 &601903778709193943
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9868,23 +9885,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0, y: 5, z: 0}
---- !u!114 &-6658180396457120461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7203666345233786578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7444a1564a8f846b014adb05f3fb0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachedCollider: {fileID: 6426551991344470221}
-  tractorMultiplier: {x: 1, y: 2}
-  relocatorMultiplier: {x: 10, y: 5}
-  homingMultiplier: {x: 15, y: 15}
-  forceMode: 5
+  serializedVersion: 2
+  m_Radius: 5
+  m_Height: 20
+  m_Direction: 1
+  m_Center: {x: 0, y: 8, z: 0}
