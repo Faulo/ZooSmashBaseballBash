@@ -22,7 +22,7 @@ namespace ZSBB.AnimalBT {
         }
 
         bool IsLanding() {
-            if (_rigidbody.velocity.y is >= 0.7f and <= (-0.7f)) {
+            if (Mathf.Abs(_rigidbody.velocity.y) < 0.7f) {
                 return true;
             }
 
